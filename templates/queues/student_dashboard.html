@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="mb-4">
+  <h2 class="mb-0">Campus Services</h2>
+  <p class="text-muted mb-0">Select a service to join its queue.</p>
+</div>
+
+{% if active_entry %}
+<div class="alert alert-info shadow-sm">
+  You are currently in queue <strong>{{ active_entry.queue_number }}</strong>
+  for {{ active_entry.service.name }}.
+  <a href="{% url 'my_queue' %}" class="alert-link">View status</a>
+</div>
+{% endif %}
+
+<div class="row">
+  {% for item in services_list %}
+  <div class="col-md-4 mb-4">
+    <div class="card service-card h-100">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-start mb-2">
+          <h5 class="card-title mb-0">{{ item.service.name }}</h5>
+          <span class="badge text-bg-{{ item.congestion.css }}">{{ item.congestion.label }}</span>
+        </div>
+        <p class="text-muted small mb-3">{{ item.service.department.name }}</p>
+        <div class="d-flex justify-content-between small mb-1">
+          <span>Waiting</span><strong>{{ item.waiting }}</strong>
+        </div>
+        <div class="d-flex justify-content-between small mb-3">
+          <span>Est. wait</span><strong>~{{ item.estimate }} min</strong>
+        </div>
+        <form method="post" action="{% url 'join_queue' item.service.id %}">
+          {% csrf_token %}
+          <button class="btn btn-ufh w-100" type="submit" {% if active_entry %}disabled{% endif %}>
+            Join Queue
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% empty %}
+  <p>No active services yet. Add services in the admin panel.</p>
+  {% endfor %}
+</div>
+{% endblock %}

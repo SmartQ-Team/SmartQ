@@ -1,0 +1,125 @@
+/* =====================================================
+   SmartQ — University of Fort Hare Theme
+   Primary colours: UFH Blue & Gold
+   ===================================================== */
+
+:root {
+  --ufh-blue: #003087;
+  --ufh-blue-dark: #001f5c;
+  --ufh-blue-soft: #e8eefb;
+  --ufh-gold: #FFB81C;
+  --ufh-gold-dark: #d99a0b;
+  --ufh-bg: #f4f7fc;
+  --ufh-text: #1c2540;
+}
+
+body {
+  background-color: var(--ufh-bg);
+  color: var(--ufh-text);
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main { flex: 1 0 auto; }
+
+h1, h2, h3, h4, h5, h6 { color: var(--ufh-blue); }
+
+.text-gold { color: var(--ufh-gold); }
+
+/* ---------- Navbar ---------- */
+.navbar-smartq {
+  background: linear-gradient(90deg, var(--ufh-blue-dark) 0%, var(--ufh-blue) 100%);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .15);
+}
+.navbar-smartq .navbar-brand { color: #fff; font-weight: 700; }
+.navbar-smartq .navbar-brand img {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+  background: #fff;
+  border-radius: 50%;
+  padding: 3px;
+}
+.brand-gold { color: var(--ufh-gold); font-weight: 600; }
+
+/* ---------- Buttons ---------- */
+.btn-ufh {
+  background: var(--ufh-gold);
+  color: var(--ufh-blue-dark);
+  font-weight: 700;
+  border: none;
+}
+.btn-ufh:hover, .btn-ufh:focus {
+  background: var(--ufh-gold-dark);
+  color: var(--ufh-blue-dark);
+}
+.btn-ufh:disabled {
+  background: #cfd8ea;
+  color: #6b7a99;
+}
+
+.btn-ufh-outline {
+  border: 2px solid var(--ufh-blue);
+  color: var(--ufh-blue);
+  font-weight: 600;
+  background: transparent;
+}
+.btn-ufh-outline:hover { background: var(--ufh-blue); color: #fff; }
+
+.btn-primary { background: var(--ufh-blue); border-color: var(--ufh-blue); }
+.btn-primary:hover, .btn-primary:focus {
+  background: var(--ufh-blue-dark);
+  border-color: var(--ufh-blue-dark);
+}
+.btn-outline-primary { color: var(--ufh-blue); border-color: var(--ufh-blue); }
+.btn-outline-primary:hover { background: var(--ufh-blue); border-color: var(--ufh-blue); }
+
+/* ---------- Cards ---------- */
+.card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0, 48, 135, .08);
+}
+.service-card {
+  border-top: 5px solid var(--ufh-gold);
+  transition: transform .15s ease;
+}
+.service-card:hover { transform: translateY(-3px); }
+
+/* ---------- Login / Register hero ---------- */
+.hero-panel {
+  background: linear-gradient(140deg, var(--ufh-blue-dark) 0%, var(--ufh-blue) 70%, #0a47c2 100%);
+  color: #fff;
+}
+.hero-panel .text-gold { color: var(--ufh-gold); }
+
+/* ---------- Queue number ---------- */
+.queue-number {
+  color: var(--ufh-blue);
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+/* ---------- Stat cards ---------- */
+.stat-card p {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .5px;
+}
+
+/* ---------- Tables ---------- */
+.table thead th {
+  background: var(--ufh-blue);
+  color: #fff;
+}
+
+/* ---------- Footer ---------- */
+.footer-smartq {
+  background: var(--ufh-blue-dark);
+  color: #c9d4ea;
+  padding: .9rem 0;
+  font-size: .83rem;
+  margin-top: 3rem;
+}

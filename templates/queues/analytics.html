@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Queue Analytics</h2>
+<p class="text-muted">
+  {% if department %}{{ department.name }}{% else %}All departments{% endif %} — today
+</p>
+
+<div class="row text-center mb-4">
+  <div class="col">
+    <div class="card shadow-sm"><div class="card-body">
+      <p class="text-muted mb-0">Served today</p><h4>{{ summary.served }}</h4>
+    </div></div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm"><div class="card-body">
+      <p class="text-muted mb-0">Avg wait (min)</p><h4>{{ summary.avg_wait }}</h4>
+    </div></div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm"><div class="card-body">
+      <p class="text-muted mb-0">Avg service (min)</p><h4>{{ summary.avg_service }}</h4>
+    </div></div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm"><div class="card-body">
+      <p class="text-muted mb-0">Max queue length</p><h4>{{ summary.max_queue }}</h4>
+    </div></div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm"><div class="card-body">
+      <p class="text-muted mb-0">No-shows</p><h4>{{ summary.no_shows }}</h4>
+    </div></div>
+  </div>
+  <div class="col">
+    <div class="card shadow-sm"><div class="card-body">
+      <p class="text-muted mb-0">Cancellations</p><h4>{{ summary.cancelled }}</h4>
+    </div></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h5>Peak Periods (arrivals per hour)</h5>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        {% for p in peak_periods %}
+        <div class="mb-2">
+          <div class="d-flex justify-content-between">
+            <span>{{ p.hour|time:"H:i" }}</span>
+            <span>{{ p.count }}</span>
+          </div>
+          <div class="progress" style="height: 8px;">
+            <div class="progress-bar bg-primary"
+                 style="width: {% widthratio p.count max_peak 100 %}%"></div>
+          </div>
+        </div>
+        {% empty %}
+        <p class="text-muted mb-0">No data yet today.</p>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <h5>Counter Utilisation (served today)</h5>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <table class="table mb-0">
+          <thead>
+            <tr><th>Counter</th><th>Students served</th></tr>
+          </thead>
+          <tbody>
+            {% for c in counters %}
+            <tr>
+              <td>{{ c.counter.name }}</td>
+              <td>{{ c.served }}</td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="2">No active counters.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="{% url 'staff_dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+    <div class="card text-center">
+      <div class="card-body p-4 p-md-5">
+        <p class="text-muted text-uppercase small mb-1">
+          {{ entry.service.department.name }} — {{ entry.service.name }}
+        </p>
+        <h1 class="display-3 queue-number">{{ entry.queue_number }}</h1>
+
+        <div id="called-banner" class="alert alert-success mt-3" style="display:none;">
+          📢 Your number has been called! Please proceed to {{ entry.service.department.name }}.
+        </div>
+
+        <div id="finished-banner" class="alert alert-secondary mt-3" style="display:none;">
+          Your queue entry has been completed or closed.
+        </div>
+
+        <hr>
+
+        <div class="row text-center">
+          <div class="col stat-card">
+            <p class="mb-0 text-muted">Currently serving</p>
+            <h4 id="now-serving">{% if currently_serving %}{{ currently_serving.queue_number }}{% else %}—{% endif %}</h4>
+          </div>
+          <div class="col stat-card">
+            <p class="mb-0 text-muted">Your status</p>
+            <h4 id="my-status">{{ entry.get_status_display }}</h4>
+          </div>
+          <div class="col stat-card">
+            <p class="mb-0 text-muted">Students ahead</p>
+            <h4 id="students-ahead">{{ ahead }}</h4>
+          </div>
+          <div class="col stat-card">
+            <p class="mb-0 text-muted">Est. wait</p>
+            <h4 id="est-wait">~{{ estimate }} min</h4>
+          </div>
+        </div>
+
+        <hr>
+        <p class="text-muted small">Live updates every 5 seconds</p>
+
+        <a href="{% url 'student_dashboard' %}" class="btn btn-ufh-outline">Back</a>
+
+        <form method="post" action="{% url 'cancel_queue' entry.id %}" class="d-inline">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">Cancel Queue</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const statusUrl = "{% url 'queue_status_api' entry.id %}";
+
+  async function refreshQueue() {
+    try {
+      const response = await fetch(statusUrl);
+      if (!response.ok) return;
+      const data = await response.json();
+
+      document.getElementById('now-serving').textContent = data.currently_serving || '—';
+      document.getElementById('my-status').textContent = data.status_display;
+      document.getElementById('students-ahead').textContent = data.ahead;
+      document.getElementById('est-wait').textContent = '~' + data.estimate + ' min';
+
+      if (data.status === 'CALLED' || data.status === 'ARRIVED') {
+        document.getElementById('called-banner').style.display = 'block';
+      } else {
+        document.getElementById('called-banner').style.display = 'none';
+      }
+
+      if (!data.active) {
+        document.getElementById('finished-banner').style.display = 'block';
+      }
+    } catch (error) {
+      // Network problem: keep the last known queue state
+    }
+  }
+
+  refreshQueue();
+  setInterval(refreshQueue, 5000);
+</script>
+{% endblock %}

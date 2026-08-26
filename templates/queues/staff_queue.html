@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+  <div>
+    <h2 class="mb-0">{{ service.name }}</h2>
+    <p class="text-muted mb-0">{{ service.department.name }}</p>
+  </div>
+  <form method="post" action="{% url 'call_next' service.id %}">
+    {% csrf_token %}
+    <button class="btn btn-ufh btn-lg" type="submit">📢 Call Next</button>
+  </form>
+</div>
+
+<h5 class="mb-3">Currently Called ({{ active_count }} / {{ counter_count }} counters)</h5>
+{% if active %}
+<div class="row mb-4">
+  {% for entry in active %}
+  <div class="col-md-4 mb-3">
+    <div class="card service-card text-center">
+      <div class="card-body">
+        <h4 class="queue-number">{{ entry.queue_number }}</h4>
+        <p class="text-muted mb-2">
+          {{ entry.get_status_display }}{% if entry.counter %} • {{ entry.counter.name }}{% endif %}
+        </p>
+        {% if entry.status == 'CALLED' %}
+        <form method="post" action="{% url 'mark_arrived' entry.id %}" class="d-inline">
+          {% csrf_token %}
+          <button class="btn btn-sm btn-outline-primary" type="submit">Arrived</button>
+        </form>
+        {% endif %}
+        <form method="post" action="{% url 'mark_served' entry.id %}" class="d-inline">
+          {% csrf_token %}
+          <button class="btn btn-sm btn-success" type="submit">Served</button>
+        </form>
+        <form method="post" action="{% url 'mark_no_show' entry.id %}" class="d-inline">
+          {% csrf_token %}
+          <button class="btn btn-sm btn-danger" type="submit">No-Show</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% else %}
+<p class="text-muted">No student currently called.</p>
+{% endif %}
+
+<h5 class="mb-3">Waiting List ({{ waiting|length }})</h5>
+<div class="card">
+  <div class="table-responsive">
+    <table class="table table-striped mb-0">
+      <thead>
+        <tr><th>#</th><th>Queue Number</th><th>Joined</th><th>Status</th></tr>
+      </thead>
+      <tbody>
+        {% for entry in waiting %}
+        <tr>
+          <td>{{ forloop.counter }}</td>
+          <td class="fw-semibold">{{ entry.queue_number }}</td>
+          <td>{{ entry.join_time|time:"H:i" }}</td>
+          <td>{{ entry.get_status_display }}</td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="4">No students waiting.</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<a href="{% url 'staff_dashboard' %}" class="btn btn-ufh-outline mt-3">Back to Dashboard</a>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-9">
+    <div class="card overflow-hidden">
+      <div class="row g-0">
+        <div class="col-md-5 hero-panel d-none d-md-flex flex-column justify-content-center p-5">
+          <h1 class="text-white fw-bold">Join SmartQ</h1>
+          <p class="text-gold fw-semibold">University of Fort Hare</p>
+          <p class="text-white-50">
+            Create your student account and stop wasting study time
+            in physical queues.
+          </p>
+        </div>
+        <div class="col-md-7 p-5">
+          <h3 class="mb-1">Student Registration</h3>
+          <p class="text-muted mb-4">Fill in your details to create an account</p>
+          <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-ufh w-100 py-2" type="submit">Create Account</button>
+          </form>
+          <p class="mt-3 mb-0">Already have an account? <a href="{% url 'login' %}">Login here</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
