@@ -14,10 +14,6 @@ from .models import QueueEntry
 from . import queue_logic
 
 
-# -------------------------------------------------
-# Student views
-# -------------------------------------------------
-
 @login_required
 def student_dashboard(request):
     active_entry = QueueEntry.objects.filter(
@@ -58,12 +54,16 @@ def join_queue(request, service_id):
 
         with transaction.atomic():
             position = queue_logic.get_active_entries(service).count() + 1
+            # NEW: Track counters at the moment of joining for ML data
+            counters_now = service.department.counters.filter(active=True).count() or 1
+            
             entry = QueueEntry.objects.create(
                 service=service,
                 student=request.user,
                 queue_number=queue_logic.generate_queue_number(service),
                 status='WAITING',
                 position=position,
+                counters_at_join=counters_now,
             )
 
         log_action(
@@ -129,10 +129,6 @@ def cancel_queue(request, entry_id):
 
     return redirect('student_dashboard')
 
-
-# -------------------------------------------------
-# Staff views
-# -------------------------------------------------
 
 @staff_required
 def staff_dashboard(request):
@@ -370,10 +366,6 @@ def analytics(request):
     }
     return render(request, 'queues/analytics.html', context)
 
-
-# -------------------------------------------------
-# API
-# -------------------------------------------------
 
 @login_required
 def queue_status_api(request, entry_id):

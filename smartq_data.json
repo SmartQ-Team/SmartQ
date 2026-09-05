@@ -1,0 +1,2700 @@
+[
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$WnivPtgjeWmQ5llsmVpze0$FoM7mt815uDcvHVYUZJlge/t6S4/esFJcyDyS8ClRBM=",
+    "last_login": "2026-08-27T08:51:24.083Z",
+    "is_superuser": true,
+    "username": "Gareth",
+    "first_name": "Gareth",
+    "last_name": "Zuma",
+    "email": "garethzuma28@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-10T14:27:57Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$lz51nvhAwrXG1VbEZBkwe1$CrH8wHqOixy27HFTxc2JXImTxXt9zVriZ74XWoGaIuc=",
+    "last_login": "2026-08-27T23:28:29.135Z",
+    "is_superuser": false,
+    "username": "thando",
+    "first_name": "Thando",
+    "last_name": "Mokoena",
+    "email": "thando@student.ac.za",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-10T15:32:52.930Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$g4YDiIQxJ9mYBIx2Gi3bs2$U8BTuF+hdl4RLsWU5D1JlJBmalJ6DDlDC/XKXDl1fNg=",
+    "last_login": "2026-08-27T12:26:36.302Z",
+    "is_superuser": false,
+    "username": "Finance1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-08-10T16:22:14Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$M0mmaIMTs9VjENpqfVd1cv$/pKgLba4f2wCFDAb+Q/gUwR8LDxM1ekIW1+gMm36W2o=",
+    "last_login": "2026-08-25T15:52:39.556Z",
+    "is_superuser": false,
+    "username": "Health1",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-25T15:49:20.669Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$gG8wRNhxvk1zxC2ATbA1uZ$/zN+ghmMVp29bsANYR2eNHhZlopoOTLQR1nC6WxqzFQ=",
+    "last_login": "2026-08-25T15:54:59.538Z",
+    "is_superuser": false,
+    "username": "Garry",
+    "first_name": "Garry",
+    "last_name": "Zuma",
+    "email": "garry@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-25T15:54:56.346Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$aC5JKsXdXwN5IoaFBUQwKI$HFLgUQgz3KwQi0ZmZWB7I5x6s9W+WFQMADmqIIl2qBc=",
+    "last_login": "2026-08-26T14:16:26.926Z",
+    "is_superuser": false,
+    "username": "Owen",
+    "first_name": "Owen",
+    "last_name": "Fokweni",
+    "email": "owenmbhele92@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-26T14:14:37.170Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$xvQ3YVR3vXcIFv3vN4AtqP$WPlAVHASNhBbfKAdbRpbic9Wn2SivJqj7F8XB9q189c=",
+    "last_login": "2026-08-26T21:04:43.762Z",
+    "is_superuser": false,
+    "username": "entle",
+    "first_name": "Entle",
+    "last_name": "Kolisa",
+    "email": "224074870@ufu.ac.za",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-26T21:04:39.833Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$ArrBCkxUpKsF3f96MuNPUp$byig3St6ujN1XQ+04Uks+HOmApTdTThhr6BJA+0AxTg=",
+    "last_login": "2026-08-27T22:27:17.581Z",
+    "is_superuser": false,
+    "username": "jadon",
+    "first_name": "Gareth",
+    "last_name": "Zuma",
+    "email": "garethzuma28@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-08-27T22:27:16.218Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "0oytcd31u88o0qsgld9djqac737zln4b",
+  "fields": {
+    "session_data": ".eJxVjDEOgzAMAP_iuYoSk5jC2J03INsxhbYCicBU9e8VEkO73p3uDT3v29jvxdZ-ytBCgMsvE9anzYfID57vi9Nl3tZJ3JG40xbXLdlet7P9G4xcRmiBmsQ1RyOPQ04iGgPWbIMQVikIUWy8sgoGnzAKxmxaUVC6Yp2ZA3y-5Lw33w:1wtTQR:9_s6igdlyO9gG3I9inztpzUruncMuDli50HtwKxycW0",
+    "expire_date": "2026-08-24T17:04:35.878Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "782x1st671owysy0p7hsw0egaucvyzsi",
+  "fields": {
+    "session_data": ".eJxVjM0OwiAQBt9lz4ZAKBR69O4zNN-yIFVDk_6cjO9umvSg15nJvGnEvtVxX_MyTkID9XT5ZYz0zO0Q8kC7zyrNbVsmVkeiTruq2yz5dT3bv0HFWmmgqEtAge98CDa7kKwW7sTDFeNsj6htYO3YeMNdBFCSMxnCORoWCH2-6WI4ug:1wzKnc:FnaSBaEyjYoE_4UrxNLcEXTv8ouzWwTzNXRxRID_iDE",
+    "expire_date": "2026-09-09T21:04:44.159Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7nth867esl7azcjriucn54m246yl9err",
+  "fields": {
+    "session_data": ".eJxVjEsOwiAUAO_y1obwKw-6dO8ZCJ-HVA0kpV0Z726adKHbmcm8wYd9q34ftPolwwwGLr8shvSkdoj8CO3eWeptW5fIjoSddrBbz_S6nu3foIZRYQaZjVYuKhsRM3faqqSFMNFJ1IVrLKiCLYQSxZTRkOFFCSETKUNTTBY-X7lFNvo:1wzEQW:b0Sszt3rc7AdPr3fmLS3Jo6tu2zHxIOxGTzaqd720io",
+    "expire_date": "2026-09-09T14:16:28.716Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7vp3zi71e4aan4zfe45wnlzsm40uzh9u",
+  "fields": {
+    "session_data": ".eJxVjDEOgzAMAP_iuYoSk5jC2J03INsxhbYCicBU9e8VEkO73p3uDT3v29jvxdZ-ytBCgMsvE9anzYfID57vi9Nl3tZJ3JG40xbXLdlet7P9G4xcRmiBmsQ1RyOPQ04iGgPWbIMQVikIUWy8sgoGnzAKxmxaUVC6Yp2ZA3y-5Lw33w:1wzVpW:oiIdab_iH6EbO3kDosj1_RLXtuigLLRkBDbPBjHm7zM",
+    "expire_date": "2026-09-10T08:51:26.523Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hr8n20zrjz1g0p871014rij2x7mug5jp",
+  "fields": {
+    "session_data": ".eJxVjLsOwjAMAP_FM4qSpi5pR_Z-Q2XHDimgROpjQvw7qtQB1rvTvWGifcvTvuoyzQIDIFx-GVN8ajmEPKjcq4m1bMvM5kjMaVczVtHX7Wz_BpnWDAM4RK8oXWBiYRuubEOwvu2Y0LW2YUSx1HhlbWwipSRORWLfuzb5LsLnC-Z1OHg:1wytUK:T8gsqD34o-je3mvKhdo58TAgBfucW-bJTnhvp31wo4I",
+    "expire_date": "2026-09-08T15:55:00.101Z"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "role": "STUDENT",
+    "student_number": "202512345",
+    "phone_number": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "role": "STAFF",
+    "student_number": null,
+    "phone_number": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "role": "STAFF",
+    "student_number": null,
+    "phone_number": null,
+    "department": 1
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "Health1"
+    ],
+    "role": "STAFF",
+    "student_number": null,
+    "phone_number": null,
+    "department": 2
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "Garry"
+    ],
+    "role": "STUDENT",
+    "student_number": "12345678",
+    "phone_number": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "Owen"
+    ],
+    "role": "STUDENT",
+    "student_number": "202860122",
+    "phone_number": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "entle"
+    ],
+    "role": "STUDENT",
+    "student_number": "2240474870",
+    "phone_number": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "jadon"
+    ],
+    "role": "STUDENT",
+    "student_number": "666666",
+    "phone_number": null,
+    "department": null
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A006 has been called for Fee Enquiry.",
+    "created_at": "2026-08-10T21:22:58.651Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 2,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A006 was marked as a no-show.",
+    "created_at": "2026-08-10T22:00:16.344Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A001 has been called for Fee Enquiry.",
+    "created_at": "2026-08-18T21:10:27.540Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A001 has been served. Thank you.",
+    "created_at": "2026-08-18T21:12:35.386Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A001 has been called for Fee Enquiry.",
+    "created_at": "2026-08-25T15:37:32.176Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A001 has been served. Thank you.",
+    "created_at": "2026-08-25T15:39:35.791Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "Garry"
+    ],
+    "message": "Your number FIN-A002 has been called for Fee Enquiry.",
+    "created_at": "2026-08-25T15:57:01.906Z",
+    "read": false
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "Garry"
+    ],
+    "message": "Your number FIN-A002 has been served. Thank you.",
+    "created_at": "2026-08-25T16:08:44.240Z",
+    "read": false
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your queue entry FIN-A001 for Fee Enquiry was cancelled.",
+    "created_at": "2026-08-27T09:12:38.137Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "entle"
+    ],
+    "message": "Your number FIN-A001 has been called for Fee Enquiry.",
+    "created_at": "2026-08-27T12:26:56.983Z",
+    "read": false
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your turn is approaching for Fee Enquiry (FIN-A002).",
+    "created_at": "2026-08-27T12:26:56.987Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "entle"
+    ],
+    "message": "Your number FIN-A001 was marked as a no-show.",
+    "created_at": "2026-08-27T12:27:13.221Z",
+    "read": false
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A002 has been called for Fee Enquiry.",
+    "created_at": "2026-08-27T12:27:21.800Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.notification",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "message": "Your number FIN-A002 has been served. Thank you.",
+    "created_at": "2026-08-27T12:27:46.054Z",
+    "read": true
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 1,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T22:49:37.663Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 2,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Garry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T22:51:15.204Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 3,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T22:53:26.780Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 4,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:43:18.538Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 5,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:44:39.014Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 6,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:45:13.342Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 7,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:48:54.360Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 8,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:49:31.447Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 9,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:53:32.621Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 10,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-10T23:53:34.815Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 11,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T01:20:33.750Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 12,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T01:23:02.469Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 13,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T01:23:19.931Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 14,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T01:36:42.273Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 15,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T02:36:23.684Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 16,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T02:38:09.852Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 17,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T02:38:32.028Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 18,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T02:41:49.114Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 19,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T11:37:35.916Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 20,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-11T11:38:12.368Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 21,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: thando.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:03:17.474Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 22,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: garethzuma28@gmail.com.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:03:38.478Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 23,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: garethzuma28@gmail.com.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:03:51.380Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 24,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: garethzuma28@gmail.com.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:04:04.821Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 25,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: TXLegend28.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:04:19.178Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 26,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:04:52.749Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 27,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:08:00.839Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 28,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 7,
+    "details": "FIN-A001 joined Fee Enquiry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:08:17.006Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 29,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:08:51.052Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 30,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:09:24.539Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 31,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "CALL_NEXT",
+    "entity_type": "QueueEntry",
+    "entity_id": 7,
+    "details": "Finance1 called FIN-A001 for Fee Enquiry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:10:27.715Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 32,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:11:41.163Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 33,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:12:05.103Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 34,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_ARRIVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 7,
+    "details": "FIN-A001 marked arrived.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:12:20.595Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 35,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_SERVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 7,
+    "details": "FIN-A001 marked served.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-18T21:12:35.565Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 36,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T10:58:30.294Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 37,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: thando.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T10:58:52.313Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 38,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-22T11:09:33.322Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 39,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:26:30.927Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 40,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:32:35.664Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 41,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:33:13.879Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 42,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:33:33.147Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 43,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 8,
+    "details": "FIN-A001 joined Fee Enquiry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:35:45.225Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 44,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "CALL_NEXT",
+    "entity_type": "QueueEntry",
+    "entity_id": 8,
+    "details": "Finance1 called FIN-A001 for Fee Enquiry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:37:32.336Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 45,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_ARRIVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 8,
+    "details": "FIN-A001 marked arrived.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:38:05.799Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 46,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_SERVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 8,
+    "details": "FIN-A001 marked served.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:39:35.944Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 47,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:43:34.760Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 48,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Gareth.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:44:00.788Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 49,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:44:29.371Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 50,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:45:21.198Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 51,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:45:34.595Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 52,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:45:51.832Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 53,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:46:42.787Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 54,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:50:14.755Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 55,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:50:27.139Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 56,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:51:08.413Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 57,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Health1.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:51:23.145Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 58,
+  "fields": {
+    "user": [
+      "Health1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Health1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:52:39.679Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 59,
+  "fields": {
+    "user": [
+      "Health1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Health1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:53:53.658Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 60,
+  "fields": {
+    "user": [
+      "Garry"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Garry logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:54:59.625Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 61,
+  "fields": {
+    "user": [
+      "Garry"
+    ],
+    "action": "REGISTER",
+    "entity_type": "User",
+    "entity_id": 5,
+    "details": "New student account created: Garry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:54:59.749Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 62,
+  "fields": {
+    "user": [
+      "Garry"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 9,
+    "details": "FIN-A002 joined Fee Enquiry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:55:41.114Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 63,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:56:38.594Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 64,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:56:52.161Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 65,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "CALL_NEXT",
+    "entity_type": "QueueEntry",
+    "entity_id": 9,
+    "details": "Finance1 called FIN-A002 for Fee Enquiry.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T15:57:02.058Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 66,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_ARRIVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 9,
+    "details": "FIN-A002 marked arrived.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T16:08:42.128Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 67,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_SERVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 9,
+    "details": "FIN-A002 marked served.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-25T16:08:44.358Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 68,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-26T12:41:25.397Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 69,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-26T12:53:59.772Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 70,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged out.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-26T12:54:54.955Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 71,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: you.",
+    "ip_address": "10.20.11.212",
+    "timestamp": "2026-08-26T14:11:59.626Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 72,
+  "fields": {
+    "user": [
+      "Owen"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Owen logged in.",
+    "ip_address": "10.20.11.212",
+    "timestamp": "2026-08-26T14:14:38.499Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 73,
+  "fields": {
+    "user": [
+      "Owen"
+    ],
+    "action": "REGISTER",
+    "entity_type": "User",
+    "entity_id": 6,
+    "details": "New student account created: Owen.",
+    "ip_address": "10.20.11.212",
+    "timestamp": "2026-08-26T14:14:38.598Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 74,
+  "fields": {
+    "user": [
+      "Owen"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 10,
+    "details": "CLI-A001 joined Health Inspection.",
+    "ip_address": "10.20.11.212",
+    "timestamp": "2026-08-26T14:15:13.174Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 75,
+  "fields": {
+    "user": [
+      "Owen"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Owen logged out.",
+    "ip_address": "10.20.11.212",
+    "timestamp": "2026-08-26T14:15:58.456Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 76,
+  "fields": {
+    "user": [
+      "Owen"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Owen logged in.",
+    "ip_address": "10.20.11.212",
+    "timestamp": "2026-08-26T14:16:27.877Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 77,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: thokozaninyingizwayo@gmail.com.",
+    "ip_address": "10.20.39.165",
+    "timestamp": "2026-08-26T19:05:49.094Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 78,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: thokozani.",
+    "ip_address": "10.20.39.165",
+    "timestamp": "2026-08-26T19:06:18.117Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 79,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Thokozani.",
+    "ip_address": "10.20.39.165",
+    "timestamp": "2026-08-26T19:06:41.049Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 80,
+  "fields": {
+    "user": [
+      "entle"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "entle logged in.",
+    "ip_address": "10.20.3.168",
+    "timestamp": "2026-08-26T21:04:43.870Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 81,
+  "fields": {
+    "user": [
+      "entle"
+    ],
+    "action": "REGISTER",
+    "entity_type": "User",
+    "entity_id": 7,
+    "details": "New student account created: entle.",
+    "ip_address": "10.20.3.168",
+    "timestamp": "2026-08-26T21:04:44.019Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 82,
+  "fields": {
+    "user": [
+      "entle"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 11,
+    "details": "FIN-A001 joined Fee Enquiry.",
+    "ip_address": "10.20.3.168",
+    "timestamp": "2026-08-26T21:05:00.823Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 83,
+  "fields": {
+    "user": [
+      "Gareth"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Gareth logged in.",
+    "ip_address": "127.0.0.1",
+    "timestamp": "2026-08-27T08:51:25.021Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 84,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T08:52:12.526Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 85,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T08:53:20.286Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 86,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T09:00:57.725Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 87,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T09:01:16.072Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 88,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 12,
+    "details": "FIN-A001 joined Fee Enquiry.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T09:02:01.554Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 89,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "QUEUE_CANCEL",
+    "entity_type": "QueueEntry",
+    "entity_id": 12,
+    "details": "FIN-A001 cancelled Fee Enquiry.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T09:12:38.518Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 90,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T09:13:04.953Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 91,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T12:24:07.243Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 92,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "QUEUE_JOIN",
+    "entity_type": "QueueEntry",
+    "entity_id": 13,
+    "details": "FIN-A002 joined Fee Enquiry.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T12:24:17.553Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 93,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Finance1.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:26:26.542Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 94,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged in.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:26:36.376Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 95,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "CALL_NEXT",
+    "entity_type": "QueueEntry",
+    "entity_id": 11,
+    "details": "Finance1 called FIN-A001 for Fee Enquiry.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:26:57.067Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 96,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_NO_SHOW",
+    "entity_type": "QueueEntry",
+    "entity_id": 11,
+    "details": "FIN-A001 marked as no-show.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:27:13.322Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 97,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "CALL_NEXT",
+    "entity_type": "QueueEntry",
+    "entity_id": 13,
+    "details": "Finance1 called FIN-A002 for Fee Enquiry.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:27:22.407Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 98,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_ARRIVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 13,
+    "details": "FIN-A002 marked arrived.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:27:33.708Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 99,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "MARK_SERVED",
+    "entity_type": "QueueEntry",
+    "entity_id": 13,
+    "details": "FIN-A002 marked served.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:27:46.198Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 100,
+  "fields": {
+    "user": [
+      "Finance1"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Finance1 logged out.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:28:38.878Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 101,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Garry.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:29:28.643Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 102,
+  "fields": {
+    "user": null,
+    "action": "LOGIN_FAILED",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "Failed login attempt for username: Garry.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T12:29:43.170Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 103,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T12:40:20.941Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 104,
+  "fields": {
+    "user": [
+      "jadon"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "jadon logged in.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T22:27:17.703Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 105,
+  "fields": {
+    "user": [
+      "jadon"
+    ],
+    "action": "REGISTER",
+    "entity_type": "User",
+    "entity_id": 8,
+    "details": "New student account created: jadon.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T22:27:17.891Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 106,
+  "fields": {
+    "user": [
+      "jadon"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "jadon logged out.",
+    "ip_address": "10.20.10.52",
+    "timestamp": "2026-08-27T22:28:00.676Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 107,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGIN_SUCCESS",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged in.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T23:28:29.277Z"
+  }
+},
+{
+  "model": "accounts.auditlog",
+  "pk": 108,
+  "fields": {
+    "user": [
+      "thando"
+    ],
+    "action": "LOGOUT",
+    "entity_type": "",
+    "entity_id": null,
+    "details": "thando logged out.",
+    "ip_address": "10.20.60.103",
+    "timestamp": "2026-08-27T23:29:14.412Z"
+  }
+},
+{
+  "model": "services.department",
+  "pk": 1,
+  "fields": {
+    "name": "Finance Office",
+    "location": "",
+    "description": "",
+    "active": true,
+    "created_at": "2026-08-10T14:54:31.244Z"
+  }
+},
+{
+  "model": "services.department",
+  "pk": 2,
+  "fields": {
+    "name": "Clinic",
+    "location": "New Student Center",
+    "description": "",
+    "active": true,
+    "created_at": "2026-08-25T15:47:14.252Z"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 1,
+  "fields": {
+    "department": 1,
+    "name": "Fee Enquiry",
+    "description": "",
+    "average_service_time_minutes": 10,
+    "active": true,
+    "created_at": "2026-08-10T14:55:00.579Z"
+  }
+},
+{
+  "model": "services.service",
+  "pk": 2,
+  "fields": {
+    "department": 2,
+    "name": "Health Inspection",
+    "description": "For weight and pills",
+    "average_service_time_minutes": 10,
+    "active": true,
+    "created_at": "2026-08-25T15:48:01.525Z"
+  }
+},
+{
+  "model": "services.counter",
+  "pk": 1,
+  "fields": {
+    "department": 1,
+    "name": "Finance Counter 1",
+    "staff_user": [
+      "Gareth"
+    ],
+    "active": true
+  }
+},
+{
+  "model": "services.counter",
+  "pk": 2,
+  "fields": {
+    "department": 2,
+    "name": "Health Office",
+    "staff_user": [
+      "Health1"
+    ],
+    "active": false
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 1,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A001",
+    "status": "CANCELLED",
+    "position": 0,
+    "join_time": "2026-08-10T15:34:16.861Z",
+    "called_time": null,
+    "arrival_time": null,
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 2,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A002",
+    "status": "NO_SHOW",
+    "position": 0,
+    "join_time": "2026-08-10T15:34:37.729Z",
+    "called_time": "2026-08-10T16:44:21.271Z",
+    "arrival_time": null,
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 3,
+  "fields": {
+    "service": 1,
+    "student": [
+      "Finance1"
+    ],
+    "queue_number": "FIN-A003",
+    "status": "CANCELLED",
+    "position": 0,
+    "join_time": "2026-08-10T16:28:10.235Z",
+    "called_time": null,
+    "arrival_time": null,
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 4,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A004",
+    "status": "COMPLETED",
+    "position": 0,
+    "join_time": "2026-08-10T17:09:35.182Z",
+    "called_time": "2026-08-10T17:10:42.801Z",
+    "arrival_time": "2026-08-10T17:10:46.760Z",
+    "service_start_time": null,
+    "completion_time": "2026-08-10T17:11:49.680Z",
+    "waiting_time_minutes": 1,
+    "service_duration_minutes": 1,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 5,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A005",
+    "status": "COMPLETED",
+    "position": 0,
+    "join_time": "2026-08-10T17:14:09.720Z",
+    "called_time": "2026-08-10T17:14:19.414Z",
+    "arrival_time": "2026-08-10T17:14:27.608Z",
+    "service_start_time": null,
+    "completion_time": "2026-08-10T17:16:36.869Z",
+    "waiting_time_minutes": 0,
+    "service_duration_minutes": 2,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 6,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A006",
+    "status": "NO_SHOW",
+    "position": 0,
+    "join_time": "2026-08-10T21:22:13.563Z",
+    "called_time": "2026-08-10T21:22:58.643Z",
+    "arrival_time": "2026-08-10T22:00:06.829Z",
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 7,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A001",
+    "status": "COMPLETED",
+    "position": 1,
+    "join_time": "2026-08-18T21:08:16.465Z",
+    "called_time": "2026-08-18T21:10:27.534Z",
+    "arrival_time": "2026-08-18T21:12:20.417Z",
+    "service_start_time": null,
+    "completion_time": "2026-08-18T21:12:34.924Z",
+    "waiting_time_minutes": 2,
+    "service_duration_minutes": 2,
+    "counter": 1,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 8,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A001",
+    "status": "COMPLETED",
+    "position": 1,
+    "join_time": "2026-08-25T15:35:45.092Z",
+    "called_time": "2026-08-25T15:37:32.165Z",
+    "arrival_time": "2026-08-25T15:38:05.704Z",
+    "service_start_time": null,
+    "completion_time": "2026-08-25T15:39:35.650Z",
+    "waiting_time_minutes": 1,
+    "service_duration_minutes": 2,
+    "counter": 1,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 9,
+  "fields": {
+    "service": 1,
+    "student": [
+      "Garry"
+    ],
+    "queue_number": "FIN-A002",
+    "status": "COMPLETED",
+    "position": 1,
+    "join_time": "2026-08-25T15:55:41.008Z",
+    "called_time": "2026-08-25T15:57:01.890Z",
+    "arrival_time": "2026-08-25T16:08:41.972Z",
+    "service_start_time": null,
+    "completion_time": "2026-08-25T16:08:44.090Z",
+    "waiting_time_minutes": 1,
+    "service_duration_minutes": 11,
+    "counter": 1,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 10,
+  "fields": {
+    "service": 2,
+    "student": [
+      "Owen"
+    ],
+    "queue_number": "CLI-A001",
+    "status": "WAITING",
+    "position": 1,
+    "join_time": "2026-08-26T14:15:13.008Z",
+    "called_time": null,
+    "arrival_time": null,
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 11,
+  "fields": {
+    "service": 1,
+    "student": [
+      "entle"
+    ],
+    "queue_number": "FIN-A001",
+    "status": "NO_SHOW",
+    "position": 1,
+    "join_time": "2026-08-26T21:05:00.675Z",
+    "called_time": "2026-08-27T12:26:56.980Z",
+    "arrival_time": null,
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": 1,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 12,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A001",
+    "status": "CANCELLED",
+    "position": 2,
+    "join_time": "2026-08-27T09:01:59.380Z",
+    "called_time": null,
+    "arrival_time": null,
+    "service_start_time": null,
+    "completion_time": null,
+    "waiting_time_minutes": null,
+    "service_duration_minutes": null,
+    "counter": null,
+    "notes": ""
+  }
+},
+{
+  "model": "queues.queueentry",
+  "pk": 13,
+  "fields": {
+    "service": 1,
+    "student": [
+      "thando"
+    ],
+    "queue_number": "FIN-A002",
+    "status": "COMPLETED",
+    "position": 2,
+    "join_time": "2026-08-27T12:24:17.144Z",
+    "called_time": "2026-08-27T12:27:21.781Z",
+    "arrival_time": "2026-08-27T12:27:33.598Z",
+    "service_start_time": null,
+    "completion_time": "2026-08-27T12:27:45.877Z",
+    "waiting_time_minutes": 3,
+    "service_duration_minutes": 0,
+    "counter": 1,
+    "notes": ""
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 1,
+  "fields": {
+    "action_time": "2026-08-10T14:54:31.273Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "department"
+    ],
+    "object_id": "1",
+    "object_repr": "Finance Office",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 2,
+  "fields": {
+    "action_time": "2026-08-10T14:55:00.597Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "service"
+    ],
+    "object_id": "1",
+    "object_repr": "Fee Enquiry",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 3,
+  "fields": {
+    "action_time": "2026-08-10T14:56:12.752Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "counter"
+    ],
+    "object_id": "1",
+    "object_repr": "Finance Counter 1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 4,
+  "fields": {
+    "action_time": "2026-08-10T15:36:50.392Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "1",
+    "object_repr": "Gareth",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"First name\", \"Last name\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 5,
+  "fields": {
+    "action_time": "2026-08-10T16:22:17.070Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "Finance1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 6,
+  "fields": {
+    "action_time": "2026-08-10T16:24:35.256Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "3",
+    "object_repr": "Finance1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Staff status\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 7,
+  "fields": {
+    "action_time": "2026-08-10T16:43:36.459Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "object_id": "2",
+    "object_repr": "Gareth - STUDENT",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 8,
+  "fields": {
+    "action_time": "2026-08-10T16:43:49.086Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "object_id": "2",
+    "object_repr": "Gareth - STAFF",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Role\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 9,
+  "fields": {
+    "action_time": "2026-08-10T17:05:02.332Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "object_id": "3",
+    "object_repr": "Finance1 - STAFF",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 10,
+  "fields": {
+    "action_time": "2026-08-18T21:07:51.363Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "2",
+    "object_repr": "thando",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 11,
+  "fields": {
+    "action_time": "2026-08-25T15:47:14.291Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "department"
+    ],
+    "object_id": "2",
+    "object_repr": "Clinic",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 12,
+  "fields": {
+    "action_time": "2026-08-25T15:48:01.531Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "service"
+    ],
+    "object_id": "2",
+    "object_repr": "Health Inspection",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 13,
+  "fields": {
+    "action_time": "2026-08-25T15:48:32.125Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "counter"
+    ],
+    "object_id": "2",
+    "object_repr": "Health Office",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 14,
+  "fields": {
+    "action_time": "2026-08-25T15:49:20.701Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "4",
+    "object_repr": "Health1",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 15,
+  "fields": {
+    "action_time": "2026-08-25T15:49:30.547Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "services",
+      "counter"
+    ],
+    "object_id": "2",
+    "object_repr": "Health Office",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"Staff user\"]}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 16,
+  "fields": {
+    "action_time": "2026-08-25T15:49:48.510Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "accounts",
+      "profile"
+    ],
+    "object_id": "4",
+    "object_repr": "Health1 - STAFF",
+    "action_flag": 1,
+    "change_message": "[{\"added\": {}}]"
+  }
+},
+{
+  "model": "admin.logentry",
+  "pk": 17,
+  "fields": {
+    "action_time": "2026-08-25T15:52:28.221Z",
+    "user": [
+      "Gareth"
+    ],
+    "content_type": [
+      "auth",
+      "user"
+    ],
+    "object_id": "4",
+    "object_repr": "Health1",
+    "action_flag": 2,
+    "change_message": "[{\"changed\": {\"fields\": [\"password\"]}}]"
+  }
+}
+]

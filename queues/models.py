@@ -31,6 +31,10 @@ class QueueEntry(models.Model):
         default='WAITING'
     )
     position = models.PositiveIntegerField(default=0)
+    
+    # NEW FIELD FOR ML
+    counters_at_join = models.PositiveIntegerField(null=True, blank=True)
+    
     join_time = models.DateTimeField(default=timezone.now)
     called_time = models.DateTimeField(null=True, blank=True)
     arrival_time = models.DateTimeField(null=True, blank=True)

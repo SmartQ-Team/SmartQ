@@ -1,7 +1,8 @@
 from django.utils import timezone
 
-from .models import QueueEntry
 from accounts.models import Notification
+
+from .models import QueueEntry
 
 ACTIVE_STATUSES = ['WAITING', 'CALLED', 'ARRIVED', 'SERVING']
 
@@ -34,9 +35,32 @@ def students_ahead(entry):
 
 
 def estimate_waiting_time(service, ahead):
+    ml_estimate = predict_with_ml(service, ahead)
+    if ml_estimate is not None:
+        return ml_estimate
+
     average_time = service.average_service_time_minutes or 10
     active_counters = service.department.counters.filter(active=True).count() or 1
     return round((ahead * average_time) / active_counters)
+
+
+def predict_with_ml(service, ahead):
+    try:
+        from . import ml_model
+    except ImportError:
+        return None
+    return ml_model.predict_waiting_time(service, ahead)
+
+
+def congestion_status(service):
+    waiting = waiting_list(service).count()
+    estimate = estimate_waiting_time(service, waiting)
+
+    if waiting > 25 or estimate > 45:
+        return {'label': 'Congested', 'css': 'danger'}
+    if waiting >= 10 or estimate >= 15:
+        return {'label': 'Moderate', 'css': 'warning'}
+    return {'label': 'Normal', 'css': 'success'}
 
 
 def generate_queue_number(service):
@@ -49,16 +73,6 @@ def generate_queue_number(service):
     ).count() + 1
 
     return f"{prefix}-A{count:03d}"
-    
-def congestion_status(service):
-    waiting = waiting_list(service).count()
-    estimate = estimate_waiting_time(service, waiting)
-
-    if waiting > 25 or estimate > 45:
-        return {'label': 'Congested', 'css': 'danger'}
-    if waiting >= 10 or estimate >= 15:
-        return {'label': 'Moderate', 'css': 'warning'}
-    return {'label': 'Normal', 'css': 'success'}
 
 
 def notify(user, message):
