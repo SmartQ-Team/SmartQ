@@ -79,6 +79,7 @@ WSGI_APPLICATION = 'smartq.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.1/ref/settings/#databases
 
+#Main database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -89,6 +90,19 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+# TEMPORARY - MySQL mirror for ERD
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'smartq_mysql',
+#        'USER': 'smartq',
+#        'PASSWORD': 'SmartQ2026',
+#        'HOST': '127.0.0.1',
+#        'PORT': '3306',
+#        'OPTIONS': {'charset': 'utf8mb4'},
+#    }
+#}
 
 # SQLite backup (uncomment to roll back)
 # DATABASES = {
