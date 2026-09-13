@@ -100,7 +100,7 @@ smartq-project/
 ├── services/                     # departments, services, counters
 ├── queues/                       # queue engine, analytics, status API
 ├── static/                       # UFH theme CSS + logo
-├── test/                         # Pytest enabled
+├── tests/                         # Pytest enabled
 └── templates/                    # all HTML templates
 ```
 
