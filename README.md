@@ -238,13 +238,25 @@ Result: ML improves accuracy by 65.5% - ML estimate enabled in SmartQ.
 - [ ] Demand forecasting & bottleneck detection
 - [ ] Priority management with audit overrides
 
-## 👥 Team
+## 👥 Team & Role Descriptions
 
-| Name | Student No. | Role |
-|---|---|---|
-| _Your name_ | _…_ | Backend / queue engine |
-| _Member 2_ | _…_ | Frontend / UI |
-| _Member 3_ | _…_ | Database / documentation |
+| # | Member | Role |
+|---|--------|------|
+| 1 | Gareth Zuma | Group Leader (GL) |
+| 2 | Monwabisi Thebe | Assignment Group Leader (Assignment GL) |
+| 3 | Nelisiwe Kolweni | Project Group Leader (Project GL) |
+| 4 | Entle Kolisa | Presentation Group Leader (Presentation GL) |
+| 5 | Luzuko Ntozonke | Research Coordinator |
+| 6 | Thokozani Nyingizwayo | Documentation Coordinator |
+| 7 | Amanda Nzama | System Design Coordinator |
+| 8 | Lonwabo Mbhele | Developer Coordinator |
+| 9 | Siphumelele Mangwane | Slide Design Coordinator |
+| 10 | Rotshidzwa Tshirundu | Presentation Coordinator |
+| 11 | Masimbonge Melani | Testing & QA Coordinator |
+| 12 | Loyiso Skebhe | Communication & Scheduling Coordinator |
+| 13 | Banele Mbokane | Repository & Version Control Coordinator |
+| 14 | Inam Zitumane | Report Editor |
+| 15 | Thokozani Myendeki | Support & Logistics Coordinator |
 
 ## 📄 License
 
