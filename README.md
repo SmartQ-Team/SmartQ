@@ -87,26 +87,12 @@ PostgreSQL (smartq_db)
 | Networks | Client-server tiers, REST-style JSON status API, polling real-time, DB over TCP, LAN/hotspot deployment, HTTPS via reverse proxy |
 | Security | Hashed passwords, CSRF, RBAC decorators, immutable audit trail with IP capture, failed-login detection |
 
-## 📸 Screenshots
-
-| Page | File |
-|---|---|
-| Login | `screenshots/01_login.png` |
-| Student dashboard | `screenshots/02_student_dashboard.png` |
-| Live queue status | `screenshots/03_queue_status.png` |
-| Staff dashboard | `screenshots/04_staff_dashboard.png` |
-| Queue management | `screenshots/05_staff_queue.png` |
-| Analytics | `screenshots/06_analytics.png` |
-| Audit log (admin) | `screenshots/07_admin_audit.png` |
-
 ## 🗂️ Project Structure
 
 ```text
 smartq-project/
 ├── manage.py
 ├── train_waiting_model.py        # ML training & comparison script
-├── make_blueprint_doc.py         # generates Word blueprint
-├── make_presentation.py          # generates PowerPoint deck
 ├── run_demo.bat                  # one-click LAN demo server
 ├── venv.bat                      # one-click activated terminal
 ├── smartq/                       # project config (settings, urls)
@@ -114,6 +100,7 @@ smartq-project/
 ├── services/                     # departments, services, counters
 ├── queues/                       # queue engine, analytics, status API
 ├── static/                       # UFH theme CSS + logo
+├──screenshots/                   # System screenshots
 └── templates/                    # all HTML templates
 ```
 
