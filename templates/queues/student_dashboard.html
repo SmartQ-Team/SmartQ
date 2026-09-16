@@ -1,46 +1,53 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<div class="mb-4">
-  <h2 class="mb-0">Campus Services</h2>
-  <p class="text-muted mb-0">Select a service to join its queue.</p>
-</div>
+<div class="container my-4">
+  <div id="deptCarousel" class="carousel slide mb-4 sq-carousel" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      {% for d in departments %}
+      <button type="button" data-bs-target="#deptCarousel" data-bs-slide-to="{{ forloop.counter0 }}" {% if forloop.first %}class="active"{% endif %}></button>
+      {% endfor %}
+    </div>
+    <div class="carousel-inner">
+      {% for d in departments %}
+      <div class="carousel-item {% if forloop.first %}active{% endif %}">
+        <div class="sq-slide d-flex flex-column justify-content-center text-center">
+          <h2 class="sq-gold">{{ d.name }}</h2>
+          <p class="mb-1">{{ d.location }}</p>
+          <p class="mb-0">{{ d.service_count }} service{{ d.service_count|pluralize }} available</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#deptCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+    <button class="carousel-control-next" type="button" data-bs-target="#deptCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
+  </div>
 
-{% if active_entry %}
-<div class="alert alert-info shadow-sm">
-  You are currently in queue <strong>{{ active_entry.queue_number }}</strong>
-  for {{ active_entry.service.name }}.
-  <a href="{% url 'my_queue' %}" class="alert-link">View status</a>
-</div>
-{% endif %}
+  {% if active_entry %}
+  <div class="alert alert-info">
+    You are in queue <b>{{ active_entry.queue_number }}</b> for {{ active_entry.service.name }}.
+    <a href="{% url 'my_queue' %}" class="alert-link">View live status</a>
+  </div>
+  {% endif %}
 
-<div class="row">
-  {% for item in services_list %}
-  <div class="col-md-4 mb-4">
-    <div class="card service-card h-100">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="card-title mb-0">{{ item.service.name }}</h5>
-          <span class="badge text-bg-{{ item.congestion.css }}">{{ item.congestion.label }}</span>
+  <h4 class="sq-blue mb-3">Join a Service Queue</h4>
+  <div class="row g-3">
+    {% for item in services_list %}
+    <div class="col-sm-6 col-lg-4">
+      <div class="card sq-card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="sq-blue">{{ item.service.name }}</h5>
+          <p class="text-muted small mb-2">{{ item.service.department.name }} · {{ item.service.department.location }}</p>
+          <p class="mb-1"><span class="badge bg-{{ item.congestion.css }}">{{ item.congestion.label }}</span></p>
+          <p class="mb-1">Waiting: <b>{{ item.waiting }}</b></p>
+          <p class="mb-3">Est. wait: <b>{{ item.estimate }} min</b></p>
+          <form method="post" action="{% url 'join_queue' item.service.id %}" class="mt-auto">
+            {% csrf_token %}
+            <button class="btn btn-gold w-100">Join Queue</button>
+          </form>
         </div>
-        <p class="text-muted small mb-3">{{ item.service.department.name }}</p>
-        <div class="d-flex justify-content-between small mb-1">
-          <span>Waiting</span><strong>{{ item.waiting }}</strong>
-        </div>
-        <div class="d-flex justify-content-between small mb-3">
-          <span>Est. wait</span><strong>~{{ item.estimate }} min</strong>
-        </div>
-        <form method="post" action="{% url 'join_queue' item.service.id %}">
-          {% csrf_token %}
-          <button class="btn btn-ufh w-100" type="submit" {% if active_entry %}disabled{% endif %}>
-            Join Queue
-          </button>
-        </form>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% empty %}
-  <p>No active services yet. Add services in the admin panel.</p>
-  {% endfor %}
 </div>
 {% endblock %}

@@ -1,0 +1,48 @@
+                               
+========== test session starts =========== 
+platform win32 -- Python 3.14.7, pytest-9.1.1, pluggy-1.6.0 -- C:\App based projects\smartq-project\venv\Scripts\python.exe
+cachedir: .pytest_cache
+django: version: 6.1, settings: smartq.settings (from ini)
+rootdir: C:\App based projects\smartq-project
+configfile: pytest.ini
+plugins: cov-7.1.0, django-4.14.0
+collected 25 items                        
+
+tests/test_models.py::test_queue_entry_str PASSED                                                                                     [  4%]
+tests/test_models.py::test_default_status_is_waiting PASSED                                                                           [  8%]
+tests/test_models.py::test_profile_role_created PASSED                                                                                [ 12%]
+tests/test_models.py::test_counters_at_join_recorded PASSED                                                                           [ 16%]
+tests/test_queue_logic.py::test_generate_queue_number_format PASSED                                                                   [ 20%]
+tests/test_queue_logic.py::test_waiting_list_is_fifo PASSED                                                                           [ 24%]
+tests/test_queue_logic.py::test_students_ahead PASSED                                                                                 [ 28%]
+tests/test_queue_logic.py::test_rule_based_estimate PASSED                                                                            [ 32%]
+tests/test_queue_logic.py::test_congestion_moderate_at_10_waiting PASSED                                                              [ 36%]
+tests/test_queue_logic.py::test_congestion_congested_when_estimate_exceeds_45 PASSED                                                  [ 40%]
+tests/test_queue_logic.py::test_congestion_normal_when_empty PASSED                                                                   [ 44%]
+tests/test_security.py::test_student_cannot_open_staff_dashboard PASSED                                                               [ 48%]
+tests/test_security.py::test_student_cannot_call_next PASSED                                                                          [ 52%]
+tests/test_security.py::test_anonymous_cannot_join_queue PASSED                                                                       [ 56%]
+tests/test_security.py::test_audit_log_written_on_join PASSED                                                                         [ 60%]
+tests/test_security.py::test_audit_log_on_call_next PASSED                                                                            [ 64%]
+tests/test_views.py::test_login_required_redirects PASSED                                                                             [ 68%]
+tests/test_views.py::test_student_join_queue PASSED                                                                                   [ 72%]
+tests/test_views.py::test_duplicate_join_blocked PASSED                                                                               [ 76%]
+tests/test_views.py::test_cancel_own_entry PASSED                                                                                     [ 80%]
+tests/test_views.py::test_cannot_cancel_other_students_entry PASSED                                                                   [ 84%]
+tests/test_views.py::test_status_api_json PASSED                                                                                      [ 88%]
+tests/test_views.py::test_call_next_assigns_counter_and_notifies PASSED                                                               [ 92%]
+tests/test_views.py::test_mark_served_computes_waiting_time PASSED                                                                    [ 96%]
+tests/test_views.py::test_mark_no_show PASSED                                                                                         [100%]
+
+============================================================= warnings summary =============================================================
+venv\Lib\site-packages\pytest_django\plugin.py:394
+  C:\App based projects\smartq-project\venv\Lib\site-packages\pytest_django\plugin.py:394: RemovedInDjango70Warning: The EMAIL_BACKEND setting is deprecated. Migrate to MAILERS before Django 7.0.
+    dj_settings.DATABASES  # noqa: B018
+
+tests/test_security.py::test_audit_log_on_call_next
+tests/test_views.py::test_call_next_assigns_counter_and_notifies
+  C:\App based projects\smartq-project\queues\queue_logic.py:145: RemovedInDjango70Warning: The 'fail_silently' argument is deprecated. See 'Migrating email to mailers' in Django's documentation for recommended replacements.
+    send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [entry.student.email], fail_silently=True)
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+===================================================== 25 passed, 3 warnings in 40.30s ======================================================

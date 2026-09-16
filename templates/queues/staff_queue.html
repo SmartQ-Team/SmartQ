@@ -1,73 +1,82 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <div>
-    <h2 class="mb-0">{{ service.name }}</h2>
-    <p class="text-muted mb-0">{{ service.department.name }}</p>
-  </div>
-  <form method="post" action="{% url 'call_next' service.id %}">
-    {% csrf_token %}
-    <button class="btn btn-ufh btn-lg" type="submit">📢 Call Next</button>
-  </form>
-</div>
+<div class="container my-4">
+  <h3 class="sq-blue">{{ service.department.name }} — {{ service.name }}</h3>
+  <p>
+    <span class="badge bg-primary" id="waitingCount">{{ waiting|length }} waiting</span>
+    <span class="badge bg-warning text-dark" id="activeCount">{{ active|length }} active</span>
+    <span class="badge bg-success">{{ counter_count }} counters</span>
+  </p>
 
-<h5 class="mb-3">Currently Called ({{ active_count }} / {{ counter_count }} counters)</h5>
-{% if active %}
-<div class="row mb-4">
-  {% for entry in active %}
-  <div class="col-md-4 mb-3">
-    <div class="card service-card text-center">
-      <div class="card-body">
-        <h4 class="queue-number">{{ entry.queue_number }}</h4>
-        <p class="text-muted mb-2">
-          {{ entry.get_status_display }}{% if entry.counter %} • {{ entry.counter.name }}{% endif %}
-        </p>
-        {% if entry.status == 'CALLED' %}
-        <form method="post" action="{% url 'mark_arrived' entry.id %}" class="d-inline">
-          {% csrf_token %}
-          <button class="btn btn-sm btn-outline-primary" type="submit">Arrived</button>
-        </form>
-        {% endif %}
-        <form method="post" action="{% url 'mark_served' entry.id %}" class="d-inline">
-          {% csrf_token %}
-          <button class="btn btn-sm btn-success" type="submit">Served</button>
-        </form>
-        <form method="post" action="{% url 'mark_no_show' entry.id %}" class="d-inline">
-          {% csrf_token %}
-          <button class="btn btn-sm btn-danger" type="submit">No-Show</button>
-        </form>
-      </div>
+  <form method="post" action="{% url 'call_next' service.id %}" class="mb-3">
+    {% csrf_token %}
+    <button class="btn btn-gold btn-lg">📢 Call Next Student</button>
+  </form>
+
+  <div class="row g-4">
+    <div class="col-lg-7">
+      <h5>Waiting List</h5>
+      <table class="table table-sm table-striped sq-table">
+        <thead><tr><th>#</th><th>Number</th><th>Student</th><th>Flags</th><th class="text-end">Reschedule</th></tr></thead>
+        <tbody id="waitingBody"></tbody>
+      </table>
+    </div>
+    <div class="col-lg-5">
+      <h5>Active Calls</h5>
+      <table class="table table-sm sq-table">
+        <thead><tr><th>Number</th><th>Status</th><th>Counter</th><th class="text-end">Actions</th></tr></thead>
+        <tbody id="activeBody"></tbody>
+      </table>
     </div>
   </div>
-  {% endfor %}
 </div>
-{% else %}
-<p class="text-muted">No student currently called.</p>
-{% endif %}
+{% endblock %}
 
-<h5 class="mb-3">Waiting List ({{ waiting|length }})</h5>
-<div class="card">
-  <div class="table-responsive">
-    <table class="table table-striped mb-0">
-      <thead>
-        <tr><th>#</th><th>Queue Number</th><th>Joined</th><th>Status</th></tr>
-      </thead>
-      <tbody>
-        {% for entry in waiting %}
-        <tr>
-          <td>{{ forloop.counter }}</td>
-          <td class="fw-semibold">{{ entry.queue_number }}</td>
-          <td>{{ entry.join_time|time:"H:i" }}</td>
-          <td>{{ entry.get_status_display }}</td>
-        </tr>
-        {% empty %}
-        <tr><td colspan="4">No students waiting.</td></tr>
-        {% endfor %}
-      </tbody>
-    </table>
-  </div>
-</div>
+{% block scripts %}
+<script>
+const CSRF = '{{ csrf_token }}';
+const API = '{% url "staff_queue_api" service.id %}';
 
-<a href="{% url 'staff_dashboard' %}" class="btn btn-ufh-outline mt-3">Back to Dashboard</a>
+function form(action, label, cls) {
+  return '<form method="post" action="' + action + '" class="d-inline ms-1">' +
+         '<input type="hidden" name="csrfmiddlewaretoken" value="' + CSRF + '">' +
+         '<button class="btn btn-sm ' + cls + '">' + label + '</button></form>';
+}
+
+function rescheduleForm(e, waiting) {
+  const opts = waiting.filter(w => w.id !== e.id)
+    .map(w => '<option value="' + w.id + '">after ' + w.queue_number + '</option>').join('');
+  return '<form method="post" action="/staff/entry/' + e.id + '/reschedule/" class="d-inline ms-1">' +
+         '<input type="hidden" name="csrfmiddlewaretoken" value="' + CSRF + '">' +
+         '<select name="target_id" class="form-select form-select-sm d-inline-block w-auto">' +
+         '<option value="">to end</option>' + opts + '</select>' +
+         '<button class="btn btn-sm btn-outline-primary ms-1">Move</button></form>';
+}
+
+async function poll() {
+  try {
+    const res = await fetch(API, {cache: 'no-store'});
+    const d = await res.json();
+    document.getElementById('waitingCount').textContent = d.waiting.length + ' waiting';
+    document.getElementById('activeCount').textContent = d.active.length + ' active';
+
+    document.getElementById('waitingBody').innerHTML = d.waiting.map(e =>
+      '<tr><td>' + e.position + '</td><td><b>' + e.queue_number + '</b></td><td>' + e.student + '</td>' +
+      '<td>' + (e.running_late ? '<span class="badge bg-warning text-dark">⏰ late</span>' : '') + '</td>' +
+      '<td class="text-end">' + (e.running_late ? rescheduleForm(e, d.waiting) : '') + '</td></tr>'
+    ).join('') || '<tr><td colspan="5" class="text-muted">No students waiting.</td></tr>';
+
+    document.getElementById('activeBody').innerHTML = d.active.map(e =>
+      '<tr><td><b>' + e.queue_number + '</b></td><td>' + e.status_display + '</td><td>' + (e.counter || '—') + '</td>' +
+      '<td class="text-end">' +
+        (e.status === 'CALLED' ? form('/staff/entry/' + e.id + '/arrived/', 'Arrived', 'btn-outline-info') : '') +
+        ((e.status === 'CALLED' || e.status === 'ARRIVED') ? form('/staff/entry/' + e.id + '/served/', 'Served ✔', 'btn-success') : '') +
+        (e.status === 'CALLED' ? form('/staff/entry/' + e.id + '/no-show/', 'No-show', 'btn-outline-danger') : '') +
+      '</td></tr>'
+    ).join('') || '<tr><td colspan="4" class="text-muted">No active calls.</td></tr>';
+  } catch (err) { /* retain last known state */ }
+}
+poll();
+setInterval(poll, 1000);
+</script>
 {% endblock %}

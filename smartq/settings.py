@@ -52,7 +52,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-]
+    'smartq.middleware.IdleRedirectMiddleware',
+    ]
 
 ROOT_URLCONF = 'smartq.urls'
 
@@ -134,31 +135,27 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.1/topics/i18n/
 
+# Internationalization
+# https://docs.djangoproject.com/en/6.1/topics/i18n/
+
 LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+TIME_ZONE = 'Africa/Johannesburg'
 USE_I18N = True
-
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/6.1/howto/static-files/
-
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [BASE_DIR / 'static']
 
+# --- Sessions & idle policy (Items 1 & 2) ---
+SESSION_COOKIE_AGE = 12 * 60 * 60        # auto logout after 12 hours (Fixed math!)
+IDLE_REDIRECT_SECONDS = 30 * 60          # return home after 30 min idle
 
-# Email
-# https://docs.djangoproject.com/en/6.1/topics/email/#topic-email-configuration
-
-MAILERS = {
-    'default': {
-        'BACKEND': 'django.core.mail.backends.console.EmailBackend',
-    },
-}
+# --- Email (Items 3 & 12) ---
+# (Deleted the broken MAILERS block to fix the ImproperlyConfigured error)
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # dev: prints to terminal
+DEFAULT_FROM_EMAIL = 'smartq@ufh.ac.za'
+ADMIN_REPORT_EMAIL = 'smartq.admin@ufh.ac.za'   # ← change to your real admin email
 
 # SmartQ login redirects
 LOGIN_URL = 'login'

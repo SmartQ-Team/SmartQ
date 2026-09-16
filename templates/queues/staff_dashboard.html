@@ -1,67 +1,52 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<div class="d-flex justify-content-between align-items-center mb-4">
-  <div>
-    <h2 class="mb-0">Staff Dashboard</h2>
-    <p class="text-muted mb-0">
-      {% if department %}{{ department.name }}{% else %}All departments{% endif %}
-    </p>
+<div class="container my-4">
+  <h3 class="sq-blue">{{ department.name|default:'All Departments' }} — Staff Dashboard</h3>
+  <div class="row text-center g-3 my-2">
+    <div class="col-6 col-md-2"><div class="sq-kpi"><h4 id="kWaiting">{{ stats.waiting_total }}</h4><small>Waiting now</small></div></div>
+    <div class="col-6 col-md-2"><div class="sq-kpi"><h4 id="kServed">{{ stats.served }}</h4><small>Served today</small></div></div>
+    <div class="col-6 col-md-2"><div class="sq-kpi"><h4 id="kAvg">{{ stats.avg_wait }}m</h4><small>Avg wait</small></div></div>
+    <div class="col-6 col-md-2"><div class="sq-kpi"><h4 id="kNoShow">{{ stats.no_shows }}</h4><small>No-shows</small></div></div>
+    <div class="col-6 col-md-2"><div class="sq-kpi"><h4 id="kCancel">{{ stats.cancelled }}</h4><small>Cancelled</small></div></div>
   </div>
-  <a href="{% url 'analytics' %}" class="btn btn-ufh-outline">View Analytics</a>
-</div>
-
-<div class="row text-center mb-4">
-  <div class="col">
-    <div class="card stat-card"><div class="card-body">
-      <p class="text-muted mb-0">Waiting now</p><h4>{{ stats.waiting_total }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card stat-card"><div class="card-body">
-      <p class="text-muted mb-0">Served today</p><h4>{{ stats.served }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card stat-card"><div class="card-body">
-      <p class="text-muted mb-0">Avg wait (min)</p><h4>{{ stats.avg_wait }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card stat-card"><div class="card-body">
-      <p class="text-muted mb-0">No-shows</p><h4>{{ stats.no_shows }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card stat-card"><div class="card-body">
-      <p class="text-muted mb-0">Cancelled</p><h4>{{ stats.cancelled }}</h4>
-    </div></div>
-  </div>
-</div>
-
-<h4 class="mb-3">Queues</h4>
-<div class="row">
-  {% for card in service_cards %}
-  <div class="col-md-4 mb-4">
-    <div class="card service-card h-100">
-      <div class="card-body">
-        <div class="d-flex justify-content-between align-items-start mb-2">
-          <h5 class="card-title mb-0">{{ card.service.name }}</h5>
-          <span class="badge text-bg-{{ card.congestion.css }}">{{ card.congestion.label }}</span>
+  <div class="row g-3">
+    {% for card in service_cards %}
+    <div class="col-md-4">
+      <div class="card sq-card h-100">
+        <div class="card-body d-flex flex-column">
+          <h5 class="sq-blue">{{ card.service.name }}</h5>
+          <p class="mb-1"><span class="badge bg-{{ card.congestion.css }}">{{ card.congestion.label }}</span></p>
+          <p class="mb-1">Waiting: <b id="w-{{ card.service.id }}">{{ card.waiting }}</b></p>
+          <p class="mb-3">Active calls: <b id="a-{{ card.service.id }}">{{ card.active_calls }}</b></p>
+          <a href="{% url 'staff_queue' card.service.id %}" class="btn btn-gold mt-auto w-100">Manage Queue</a>
         </div>
-        <p class="text-muted small mb-3">{{ card.service.department.name }}</p>
-        <div class="d-flex justify-content-between small mb-1">
-          <span>Waiting</span><strong>{{ card.waiting }}</strong>
-        </div>
-        <div class="d-flex justify-content-between small mb-3">
-          <span>Active calls</span><strong>{{ card.active_calls }} / {{ card.counters }} counters</strong>
-        </div>
-        <a href="{% url 'staff_queue' card.service.id %}" class="btn btn-primary w-100">Manage Queue</a>
       </div>
     </div>
+    {% endfor %}
   </div>
-  {% empty %}
-  <p>No services assigned to your department yet.</p>
-  {% endfor %}
 </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+async function poll() {
+  try {
+    const res = await fetch('{% url "staff_dashboard_api" %}', {cache: 'no-store'});
+    const d = await res.json();
+    document.getElementById('kWaiting').textContent = d.stats.waiting_total;
+    document.getElementById('kServed').textContent = d.stats.served;
+    document.getElementById('kAvg').textContent = d.stats.avg_wait + 'm';
+    document.getElementById('kNoShow').textContent = d.stats.no_shows;
+    document.getElementById('kCancel').textContent = d.stats.cancelled;
+    d.cards.forEach(c => {
+      const w = document.getElementById('w-' + c.id);
+      const a = document.getElementById('a-' + c.id);
+      if (w) w.textContent = c.waiting;
+      if (a) a.textContent = c.active_calls;
+    });
+  } catch (e) { /* retain last known state */ }
+}
+poll();
+setInterval(poll, 1000);
+</script>
 {% endblock %}

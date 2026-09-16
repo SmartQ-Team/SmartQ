@@ -49,6 +49,7 @@ def counter(department, staff_user):
         department=department,
         name='Counter 1',
         staff_user=staff_user,
+        active=True,
     )
 
 

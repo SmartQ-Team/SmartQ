@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container my-4" style="max-width: 640px;">
+  <div class="card sq-card">
+    <div class="card-body p-4">
+      <h4 class="sq-blue">Report a Problem</h4>
+      <p class="text-muted small">Your report is emailed directly to the administrator and recorded in the audit log.</p>
+      <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Category</label>
+          <select name="category" class="form-select">
+            <option>Bug</option>
+            <option>Design / UI</option>
+            <option>Performance</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Describe the problem</label>
+          <textarea name="description" class="form-control" rows="5" required placeholder="What happened? What did you expect?"></textarea>
+        </div>
+        <button class="btn btn-gold w-100">Send Report</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
