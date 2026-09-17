@@ -42,7 +42,13 @@
           <p class="mb-3">Est. wait: <b>{{ item.estimate }} min</b></p>
           <form method="post" action="{% url 'join_queue' item.service.id %}" class="mt-auto">
             {% csrf_token %}
+            {% if active_entry %}
+            <button class="btn btn-secondary w-100" disabled title="Finish or cancel your current queue first">
+              🔒 Already in a queue
+            </button>
+            {% else %}
             <button class="btn btn-gold w-100">Join Queue</button>
+            {% endif %}
           </form>
         </div>
       </div>

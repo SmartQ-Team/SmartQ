@@ -44,6 +44,9 @@ h1, h2, h3, h4, h5, h6 { color: var(--ufh-blue); }
   border-radius: 50%;
   padding: 3px;
 }
+.sq-navbar .navbar-nav { align-items: center; }
+.sq-navbar .nav-link { display: inline-flex; align-items: center; gap: .3rem; }
+.sq-navbar .navbar-text { display: inline-flex; align-items: center; }
 .sq-navbar .nav-link { 
   color: rgba(255, 255, 255, 0.9); 
   font-weight: 500; 

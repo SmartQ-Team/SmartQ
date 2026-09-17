@@ -5,6 +5,14 @@
     📢 YOU ARE BEING CALLED NOW — proceed to the service point!
   </div>
 
+  <div id="arrivedBanner" class="alert alert-success text-center" style="display:none">
+    ✅ You have arrived — please wait at the service point.
+  </div>
+
+  <div id="endedBanner" class="alert alert-secondary text-center" style="display:none">
+    ✅ Your queue entry has ended. You may now join a new queue from the Services page.
+  </div>
+
   <div class="card sq-card mx-auto" style="max-width: 560px;">
     <div class="card-body text-center">
       <p class="text-muted mb-1">{{ entry.service.department.name }} · {{ entry.service.name }}</p>
@@ -22,13 +30,13 @@
       <hr>
       <div class="d-grid gap-2">
         {% if entry.status == 'WAITING' and not entry.running_late %}
-        <form method="post" action="{% url 'mark_late' entry.id %}">
+        <form method="post" action="{% url 'mark_late' entry.id %}" id="lateForm">
           {% csrf_token %}
           <button class="btn btn-outline-warning w-100">⏰ I will run late — inform staff</button>
         </form>
         {% endif %}
         {% if entry.status == 'WAITING' or entry.status == 'CALLED' %}
-        <form method="post" action="{% url 'cancel_queue' entry.id %}">
+        <form method="post" action="{% url 'cancel_queue' entry.id %}" id="cancelForm">
           {% csrf_token %}
           <button class="btn btn-outline-danger w-100">Cancel my queue entry</button>
         </form>
@@ -44,6 +52,26 @@
 <script>
 (async function () {
   const url = '{% url "queue_status_api" entry.id %}';
+
+  function updateActions(d) {
+    const lateForm = document.getElementById('lateForm');
+    const cancelForm = document.getElementById('cancelForm');
+    const calledBanner = document.getElementById('calledBanner');
+    const arrivedBanner = document.getElementById('arrivedBanner');
+    const endedBanner = document.getElementById('endedBanner');
+
+    const showLate = (d.status === 'WAITING' && !d.running_late);
+    const showCancel = (d.status === 'WAITING' || d.status === 'CALLED');
+    const showArrived = (d.status === 'ARRIVED' || d.status === 'SERVING');
+
+    if (lateForm) lateForm.style.display = showLate ? 'block' : 'none';
+    if (cancelForm) cancelForm.style.display = showCancel ? 'block' : 'none';
+    if (calledBanner) calledBanner.style.display = (d.status === 'CALLED') ? 'block' : 'none';
+    if (arrivedBanner) arrivedBanner.style.display = showArrived ? 'block' : 'none';
+    if (endedBanner) endedBanner.style.display = (!d.active) ? 'block' : 'none';
+    document.getElementById('lateBadge').style.display = d.running_late ? 'inline-block' : 'none';
+  }
+
   async function poll() {
     try {
       const res = await fetch(url, {cache: 'no-store'});
@@ -52,8 +80,7 @@
       document.getElementById('qAhead').textContent = d.ahead;
       document.getElementById('qEstimate').textContent = d.estimate + ' min';
       document.getElementById('qServing').textContent = d.currently_serving || '—';
-      document.getElementById('calledBanner').style.display = (d.status === 'CALLED') ? 'block' : 'none';
-      document.getElementById('lateBadge').style.display = d.running_late ? 'inline-block' : 'none';
+      updateActions(d);
     } catch (e) { /* retain last known state */ }
   }
   poll();

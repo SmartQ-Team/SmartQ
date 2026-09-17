@@ -82,16 +82,19 @@ def join_queue(request, service_id):
 @login_required
 def my_queue(request):
     entry = QueueEntry.objects.filter(
-        student=request.user, status__in=queue_logic.ACTIVE_STATUSES,
+        student=request.user,
+        status__in=queue_logic.ACTIVE_STATUSES,
     ).order_by('-join_time').first()
 
     if not entry:
+        messages.info(request, 'You have no active queue entry.')
         return redirect('student_dashboard')
 
+    ahead = queue_logic.students_ahead(entry)
     context = {
         'entry': entry,
-        'ahead': queue_logic.students_ahead(entry),
-        'estimate': queue_logic.estimate_waiting_time(entry.service, queue_logic.students_ahead(entry)),
+        'ahead': ahead,
+        'estimate': queue_logic.estimate_waiting_time(entry.service, ahead),
         'currently_serving': queue_logic.active_calls(entry.service).first(),
     }
     return render(request, 'queues/my_queue.html', context)

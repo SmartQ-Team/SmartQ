@@ -1,90 +1,100 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<h2>Queue Analytics</h2>
-<p class="text-muted">
-  {% if department %}{{ department.name }}{% else %}All departments{% endif %} — today
-</p>
+<div class="container my-4">
 
-<div class="row text-center mb-4">
-  <div class="col">
-    <div class="card shadow-sm"><div class="card-body">
-      <p class="text-muted mb-0">Served today</p><h4>{{ summary.served }}</h4>
-    </div></div>
+  <div class="d-flex justify-content-between align-items-center flex-wrap gap-2 mb-4">
+    <div>
+      <h3 class="sq-blue mb-1">📊 Queue Analytics</h3>
+      <p class="text-muted mb-0">{{ department.name|default:'All departments' }} — today</p>
+    </div>
+    <a href="{% url 'staff_dashboard' %}" class="btn btn-sm btn-ufh-outline">← Back to Dashboard</a>
   </div>
-  <div class="col">
-    <div class="card shadow-sm"><div class="card-body">
-      <p class="text-muted mb-0">Avg wait (min)</p><h4>{{ summary.avg_wait }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card shadow-sm"><div class="card-body">
-      <p class="text-muted mb-0">Avg service (min)</p><h4>{{ summary.avg_service }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card shadow-sm"><div class="card-body">
-      <p class="text-muted mb-0">Max queue length</p><h4>{{ summary.max_queue }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card shadow-sm"><div class="card-body">
-      <p class="text-muted mb-0">No-shows</p><h4>{{ summary.no_shows }}</h4>
-    </div></div>
-  </div>
-  <div class="col">
-    <div class="card shadow-sm"><div class="card-body">
-      <p class="text-muted mb-0">Cancellations</p><h4>{{ summary.cancelled }}</h4>
-    </div></div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6">
-    <h5>Peak Periods (arrivals per hour)</h5>
-    <div class="card shadow-sm">
-      <div class="card-body">
-        {% for p in peak_periods %}
-        <div class="mb-2">
-          <div class="d-flex justify-content-between">
-            <span>{{ p.hour|time:"H:i" }}</span>
-            <span>{{ p.count }}</span>
-          </div>
-          <div class="progress" style="height: 8px;">
-            <div class="progress-bar bg-primary"
-                 style="width: {% widthratio p.count max_peak 100 %}%"></div>
-          </div>
-        </div>
-        {% empty %}
-        <p class="text-muted mb-0">No data yet today.</p>
-        {% endfor %}
+  <div class="row g-3 mb-4">
+    <div class="col-6 col-md-4 col-xl-2">
+      <div class="sq-kpi text-center h-100">
+        <p class="text-muted small text-uppercase mb-1">Served today</p>
+        <h4 class="sq-blue mb-0">{{ summary.served }}</h4>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+      <div class="sq-kpi text-center h-100">
+        <p class="text-muted small text-uppercase mb-1">Avg wait (min)</p>
+        <h4 class="sq-blue mb-0">{{ summary.avg_wait }}</h4>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+      <div class="sq-kpi text-center h-100">
+        <p class="text-muted small text-uppercase mb-1">Avg service (min)</p>
+        <h4 class="sq-blue mb-0">{{ summary.avg_service }}</h4>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+      <div class="sq-kpi text-center h-100">
+        <p class="text-muted small text-uppercase mb-1">Max queue length</p>
+        <h4 class="sq-blue mb-0">{{ summary.max_queue }}</h4>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+      <div class="sq-kpi text-center h-100">
+        <p class="text-muted small text-uppercase mb-1">No-shows</p>
+        <h4 class="sq-blue mb-0">{{ summary.no_shows }}</h4>
+      </div>
+    </div>
+    <div class="col-6 col-md-4 col-xl-2">
+      <div class="sq-kpi text-center h-100">
+        <p class="text-muted small text-uppercase mb-1">Cancellations</p>
+        <h4 class="sq-blue mb-0">{{ summary.cancelled }}</h4>
       </div>
     </div>
   </div>
 
-  <div class="col-md-6">
-    <h5>Counter Utilisation (served today)</h5>
-    <div class="card shadow-sm">
-      <div class="card-body">
-        <table class="table mb-0">
-          <thead>
-            <tr><th>Counter</th><th>Students served</th></tr>
-          </thead>
-          <tbody>
-            {% for c in counters %}
-            <tr>
-              <td>{{ c.counter.name }}</td>
-              <td>{{ c.served }}</td>
-            </tr>
-            {% empty %}
-            <tr><td colspan="2">No active counters.</td></tr>
+  <div class="row g-4">
+    <div class="col-lg-6">
+      <div class="card sq-card h-100">
+        <div class="card-body">
+          <h5 class="sq-blue mb-3">Peak Periods (arrivals per hour)</h5>
+          {% if peak_periods %}
+            {% for p in peak_periods %}
+            <div class="d-flex align-items-center mb-2">
+              <small class="text-muted me-2" style="width:70px;">{{ p.hour|date:'H:i' }}</small>
+              <div class="progress flex-grow-1" style="height:14px;">
+                <div class="progress-bar" role="progressbar"
+                     style="width:{% widthratio p.count max_peak 100 %}%; background:#FFB81C;"></div>
+              </div>
+              <small class="ms-2 text-muted" style="width:30px;">{{ p.count }}</small>
+            </div>
             {% endfor %}
-          </tbody>
-        </table>
+          {% else %}
+            <p class="text-muted mb-0">No data yet today.</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card sq-card h-100">
+        <div class="card-body">
+          <h5 class="sq-blue mb-3">Counter Utilisation (served today)</h5>
+          <table class="table table-sm sq-table mb-0">
+            <thead>
+              <tr><th>Counter</th><th class="text-end">Students served</th></tr>
+            </thead>
+            <tbody>
+              {% for c in counters %}
+              <tr>
+                <td>{{ c.counter.name }}</td>
+                <td class="text-end"><b>{{ c.served }}</b></td>
+              </tr>
+              {% empty %}
+              <tr><td colspan="2" class="text-muted">No active counters.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<a href="{% url 'staff_dashboard' %}" class="btn btn-secondary mt-3">Back to Dashboard</a>
+</div>
 {% endblock %}
