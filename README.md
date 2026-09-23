@@ -226,22 +226,6 @@ netsh advfirewall firewall add rule name="SmartQ Demo" dir=in action=allow proto
 
 ---
 
-## 🔒 HTTPS (Optional)
-
-TLS is terminated at a Caddy reverse proxy (app bound to localhost only):
-
-```caddyfile
-:8443 {
-    tls internal
-    reverse_proxy 127.0.0.1:8000
-}
-```
-
-Production deployments would use publicly-trusted certificates
-(e.g. Let's Encrypt) with automatic renewal.
-
----
-
 ## 🤖 Machine Learning Investigation
 
 ```bash
