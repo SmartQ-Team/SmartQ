@@ -50,8 +50,35 @@
 
 {% block scripts %}
 <script>
-(async function () {
+(function () {
   const url = '{% url "queue_status_api" entry.id %}';
+  let lastStatus = '{{ entry.status }}';
+  let audioCtx = null;
+
+  if ('Notification' in window && Notification.permission === 'default') {
+    Notification.requestPermission();
+  }
+
+  function callAlert() {
+    try {
+      audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+      const beep = (t, f) => {
+        const o = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+        o.frequency.value = f;
+        o.connect(g); g.connect(audioCtx.destination);
+        g.gain.setValueAtTime(0.0001, audioCtx.currentTime + t);
+        g.gain.exponentialRampToValueAtTime(0.4, audioCtx.currentTime + t + 0.02);
+        g.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + t + 0.35);
+        o.start(audioCtx.currentTime + t); o.stop(audioCtx.currentTime + t + 0.4);
+      };
+      beep(0, 880); beep(0.45, 1174.66); beep(0.9, 1567.98);
+    } catch (e) { /* audio blocked */ }
+    if (navigator.vibrate) navigator.vibrate([300, 150, 300]);
+    if ('Notification' in window && Notification.permission === 'granted') {
+      new Notification('SmartQ: You are up next!', {body: 'Proceed to the service point now.'});
+    }
+  }
 
   function updateActions(d) {
     const lateForm = document.getElementById('lateForm');
@@ -60,14 +87,10 @@
     const arrivedBanner = document.getElementById('arrivedBanner');
     const endedBanner = document.getElementById('endedBanner');
 
-    const showLate = (d.status === 'WAITING' && !d.running_late);
-    const showCancel = (d.status === 'WAITING' || d.status === 'CALLED');
-    const showArrived = (d.status === 'ARRIVED' || d.status === 'SERVING');
-
-    if (lateForm) lateForm.style.display = showLate ? 'block' : 'none';
-    if (cancelForm) cancelForm.style.display = showCancel ? 'block' : 'none';
+    if (lateForm) lateForm.style.display = (d.status === 'WAITING' && !d.running_late) ? 'block' : 'none';
+    if (cancelForm) cancelForm.style.display = (d.status === 'WAITING' || d.status === 'CALLED') ? 'block' : 'none';
     if (calledBanner) calledBanner.style.display = (d.status === 'CALLED') ? 'block' : 'none';
-    if (arrivedBanner) arrivedBanner.style.display = showArrived ? 'block' : 'none';
+    if (arrivedBanner) arrivedBanner.style.display = (d.status === 'ARRIVED' || d.status === 'SERVING') ? 'block' : 'none';
     if (endedBanner) endedBanner.style.display = (!d.active) ? 'block' : 'none';
     document.getElementById('lateBadge').style.display = d.running_late ? 'inline-block' : 'none';
   }
@@ -81,6 +104,8 @@
       document.getElementById('qEstimate').textContent = d.estimate + ' min';
       document.getElementById('qServing').textContent = d.currently_serving || '—';
       updateActions(d);
+      if (d.status === 'CALLED' && lastStatus !== 'CALLED') callAlert();
+      lastStatus = d.status;
     } catch (e) { /* retain last known state */ }
   }
   poll();

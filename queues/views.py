@@ -297,7 +297,7 @@ def call_next(request, service_id):
             entry.save()
             queue_logic.notify_called(entry)
             queue_logic.notify_turn_approaching(service)
-            queue_logic.email_student_called(entry)   # Item 3
+            queue_logic.email_student_called(entry, request)   # Item 3
 
         log_action(request, action='CALL_NEXT', entity_type='QueueEntry', entity_id=entry.id,
                    details=f'{request.user.username} called {entry.queue_number} for {service.name}.')
@@ -410,3 +410,21 @@ def queue_status_api(request, entry_id):
         'running_late': entry.running_late,
         'active': entry.status in queue_logic.ACTIVE_STATUSES,
     }, headers=NO_STORE)
+
+def board(request):
+    """Public display board - no login required (for TVs/projectors)."""
+    return render(request, 'queues/board.html')
+
+
+def board_api(request):
+    boards = []
+    for service in Service.objects.filter(active=True).select_related('department'):
+        called = queue_logic.active_calls(service).first()
+        boards.append({
+            'service': service.name,
+            'department': service.department.name,
+            'now_serving': called.queue_number if called else None,
+            'counter': called.counter.name if called and called.counter else None,
+            'waiting': queue_logic.waiting_list(service).count(),
+        })
+    return JsonResponse({'boards': boards}, headers={'Cache-Control': 'no-store'})

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 """
 
 from pathlib import Path
+import logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -151,13 +152,82 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 SESSION_COOKIE_AGE = 12 * 60 * 60        # auto logout after 12 hours (Fixed math!)
 IDLE_REDIRECT_SECONDS = 30 * 60          # return home after 30 min idle
 
-# --- Email (Items 3 & 12) ---
-# (Deleted the broken MAILERS block to fix the ImproperlyConfigured error)
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # dev: prints to terminal
-DEFAULT_FROM_EMAIL = 'smartq@ufh.ac.za'
-ADMIN_REPORT_EMAIL = 'smartq.admin@ufh.ac.za'   # ← change to your real admin email
+# --- Email delivery: HTTPS API first (works on ALL networks), SMTP backup ---
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'garethzuma28@gmail.com'
+EMAIL_HOST_PASSWORD = 'CHANGE_ME'   # optional backup channel (Gmail App Password)
+DEFAULT_FROM_EMAIL = 'garethzuma28@gmail.com'
+ADMIN_REPORT_EMAIL = 'zumagareth28@gmail.com'
+# Base URL used inside email buttons (change when on hotspot)
+SITE_URL = 'http://10.20.34.172:8000'
+
+# Brevo HTTPS channel (port 443 - never blocked by campus Wi-Fi)
+BREVO_API_KEY = 'CHANGE_ME'
+BREVO_SENDER_EMAIL = 'garethzuma28@gmail.com'
 
 # SmartQ login redirects
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
+
+# --- Console logging: timestamps, colours, quiet polling ---
+class _SkipPollingFilter:
+    _PREFIXES = ('/notifications/api/', '/staff/api/', '/queue/api/', '/board/api/')
+
+    def filter(self, record):
+        msg = record.getMessage()
+        return not (any(p in msg for p in self._PREFIXES) and '" 200 ' in msg)
+
+
+class _SmartQServerFormatter(logging.Formatter):
+    GREEN = '\033[32m'
+    RED = '\033[31m'
+    YELLOW = '\033[33m'
+    RESET = '\033[0m'
+    AUTH_PATHS = ('/login/', '/logout/', '/register/')
+
+    def format(self, record):
+        msg = record.getMessage()
+        status = getattr(record, 'status_code', None)
+        color = ''
+        if status:
+            if any(p in msg for p in self.AUTH_PATHS):
+                color = self.GREEN          # register / login / logout → GREEN
+            elif status >= 500 or status == 403:
+                color = self.RED            # server errors / forbidden → red
+            elif status >= 400:
+                color = self.YELLOW         # not found etc → yellow
+            elif status >= 300:
+                color = self.GREEN          # redirects → green
+        server_time = getattr(record, 'server_time', self.formatTime(record))
+        line = f'[{server_time}] {msg}'
+        return color + line + self.RESET if color else line
+
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'smartq.server': {'()': _SmartQServerFormatter},
+    },
+    'filters': {
+        'skip_polling': {'()': _SkipPollingFilter},
+    },
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+            'formatter': 'smartq.server',
+            'filters': ['skip_polling'],
+        },
+    },
+    'loggers': {
+        'django.server': {
+            'handlers': ['console'],
+            'level': 'INFO',
+            'propagate': False,
+        },
+    },
+}

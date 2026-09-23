@@ -1,0 +1,84 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SmartQ | Live Service Board</title>
+  <link href="{% static 'css/smartq.css' %}" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(160deg, #00123d, #001f5c 60%, #003087); margin: 0; }
+    .board-head { display: flex; align-items: center; gap: 18px; padding: 24px 28px 0; color: #fff; }
+    .board-brand { color: #FFB81C; font-weight: 800; font-size: 1.8rem; letter-spacing: 1px; }
+    .board-title { flex: 1; opacity: .9; }
+    .board-clock { font-variant-numeric: tabular-nums; font-size: 1.4rem; color: #FFB81C; font-weight: 700; }
+    .board-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; padding: 28px; }
+    .board-card { background: rgba(255,255,255,.06); border: 1px solid rgba(255,184,28,.35); border-radius: 16px; text-align: center; padding: 26px 18px; color: #fff; }
+    .board-dept { color: #9fb3d9; font-size: .8rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; }
+    .board-service { color: #fff; margin: 6px 0 12px; }
+    .board-num { font-size: 4rem; font-weight: 800; color: #FFB81C; letter-spacing: 4px; line-height: 1; margin: 10px 0; text-shadow: 0 0 24px rgba(255,184,28,.45); }
+    .board-counter { color: #c9d4ea; margin: 4px 0; }
+    .board-waiting { color: #9fb3d9; margin: 0; font-size: .85rem; }
+  </style>
+</head>
+<body>
+  <header class="board-head">
+    <span class="board-brand">SmartQ</span>
+    <span class="board-title">Live Service Board — University of Fort Hare</span>
+    <span class="board-clock" id="clock"></span>
+  </header>
+  <div class="board-grid" id="grid"></div>
+
+<script>
+let audioCtx = null;
+function chime() {
+  try {
+    audioCtx = audioCtx || new (window.AudioContext || window.webkitAudioContext)();
+    const t = audioCtx.currentTime;
+    [523.25, 783.99].forEach((f, i) => {
+      const o = audioCtx.createOscillator();
+      const g = audioCtx.createGain();
+      o.frequency.value = f;
+      o.connect(g); g.connect(audioCtx.destination);
+      const start = t + i * 0.25;
+      g.gain.setValueAtTime(0.0001, start);
+      g.gain.exponentialRampToValueAtTime(0.3, start + 0.03);
+      g.gain.exponentialRampToValueAtTime(0.0001, start + 0.5);
+      o.start(start); o.stop(start + 0.55);
+    });
+  } catch (e) { /* audio blocked */ }
+}
+
+let prev = null;
+async function load() {
+  try {
+    const res = await fetch('{% url "board_api" %}', {cache: 'no-store'});
+    const d = await res.json();
+    if (prev === null) {
+      prev = {};
+      d.boards.forEach(b => prev[b.service] = b.now_serving);
+    } else {
+      d.boards.forEach(b => {
+        if (b.now_serving && prev[b.service] !== b.now_serving) {
+          prev[b.service] = b.now_serving;
+          chime();
+        }
+      });
+    }
+    document.getElementById('grid').innerHTML = d.boards.map(b =>
+      '<div class="board-card">' +
+        '<p class="board-dept">' + b.department + '</p>' +
+        '<h3 class="board-service">' + b.service + '</h3>' +
+        '<div class="board-num">' + (b.now_serving || '—') + '</div>' +
+        '<p class="board-counter">' + (b.counter ? 'Counter: ' + b.counter : 'No active call') + '</p>' +
+        '<p class="board-waiting">' + b.waiting + ' waiting</p>' +
+      '</div>'
+    ).join('') || '<p style="color:#9fb3d9">No active services.</p>';
+  } catch (e) { /* retain last state */ }
+}
+setInterval(() => { document.getElementById('clock').textContent = new Date().toLocaleTimeString(); }, 1000);
+load();
+setInterval(load, 2000);
+</script>
+</body>
+</html>

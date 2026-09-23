@@ -127,12 +127,23 @@ def notify_late(entry):
     )
 
 
-# ---------- email (Item 3) ----------
+def email_student_called(entry, request=None):
+    from django.template.loader import render_to_string
+    from django.urls import reverse
 
-def email_student_called(entry):
-    from django.conf import settings
-    from django.core.mail import send_mail
+    from smartq.mailer import send_email
 
+    button_url = '#'
+    if request is not None:
+        button_url = request.build_absolute_uri(reverse('my_queue'))
+
+    html = render_to_string('emails/called_next.html', {
+        'username': entry.student.username,
+        'queue_number': entry.queue_number,
+        'service_name': entry.service.name,
+        'department_name': entry.service.department.name,
+        'button_url': button_url,
+    })
     subject = f'SmartQ: You are up next - {entry.queue_number}'
     body = (
         f'Hello {entry.student.username},\n\n'
@@ -141,7 +152,4 @@ def email_student_called(entry):
         f'Please proceed to the service point immediately.\n\n'
         f'SmartQ - University of Fort Hare'
     )
-    try:
-        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [entry.student.email], fail_silently=True)
-    except Exception:
-        pass
+    send_email(subject, body, [entry.student.email], html=html)

@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;background:#f4f7fc;font-family:'Segoe UI',Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f7fc;padding:24px 0;">
+    <tr><td align="center">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;">
+        <tr>
+          <td style="background:#003087;padding:20px 28px;text-align:center;">
+            <span style="color:#FFB81C;font-size:26px;font-weight:800;letter-spacing:1px;">SmartQ</span>
+            <div style="color:#c9d4ea;font-size:12px;margin-top:4px;">University of Fort Hare · Queue Management</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:32px 28px;text-align:center;">
+            <div style="font-size:15px;color:#1c2540;">Hello <b>{{ username }}</b>,</div>
+            <div style="font-size:20px;color:#003087;font-weight:700;margin-top:10px;">You are up next! 📢</div>
+            <div style="margin:22px auto 0;display:inline-block;background:#FFF6E0;border:2px solid #FFB81C;border-radius:12px;padding:14px 34px;">
+              <span style="font-size:34px;font-weight:800;color:#003087;letter-spacing:3px;">{{ queue_number }}</span>
+            </div>
+            <div style="font-size:14px;color:#5a6a8c;margin-top:10px;">{{ service_name }} · {{ department_name }}</div>
+            <div style="font-size:14px;color:#1c2540;margin-top:18px;">
+              Please proceed to the service point <b>immediately</b>.<br>Your turn is being called now.
+            </div>
+            <div style="margin-top:26px;">
+              <a href="{{ button_url }}" style="background:#FFB81C;color:#003087;font-weight:700;text-decoration:none;padding:12px 30px;border-radius:8px;display:inline-block;">View My Live Queue</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#001f5c;padding:14px 28px;text-align:center;">
+            <span style="color:#c9d4ea;font-size:11px;">SmartQ · Capstone Project 2026 · Automated notification — please do not reply</span>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

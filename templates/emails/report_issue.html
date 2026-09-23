@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"></head>
+<body style="margin:0;padding:0;background:#f4f7fc;font-family:'Segoe UI',Arial,sans-serif;">
+  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f4f7fc;padding:24px 0;">
+    <tr><td align="center">
+      <table role="presentation" width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;">
+        <tr>
+          <td style="background:#003087;padding:20px 28px;text-align:center;">
+            <span style="color:#FFB81C;font-size:26px;font-weight:800;letter-spacing:1px;">SmartQ</span>
+            <div style="color:#c9d4ea;font-size:12px;margin-top:4px;">Administrator Report</div>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding:28px;">
+            <div style="font-size:16px;color:#003087;font-weight:700;">🐞 {{ category }} reported</div>
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px;font-size:13px;color:#1c2540;">
+              <tr><td style="padding:6px 0;color:#5a6a8c;width:90px;">User</td><td><b>{{ username }}</b> ({{ user_email }})</td></tr>
+              <tr><td style="padding:6px 0;color:#5a6a8c;">Time</td><td>{{ reported_at }}</td></tr>
+              <tr><td style="padding:6px 0;color:#5a6a8c;">Category</td><td><span style="background:#FFF6E0;border:1px solid #FFB81C;border-radius:20px;padding:2px 12px;color:#003087;font-weight:600;">{{ category }}</span></td></tr>
+            </table>
+            <div style="margin-top:18px;background:#f4f7fc;border-left:4px solid #003087;border-radius:6px;padding:14px 16px;font-size:14px;color:#1c2540;white-space:pre-line;">{{ description }}</div>
+            <div style="margin-top:22px;">
+             <a href="{{ button_url }}" style="background:#FFB81C;color:#003087;font-weight:700;text-decoration:none;padding:12px 30px;border-radius:8px;display:inline-block;">View My Live Queue</a>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td style="background:#001f5c;padding:14px 28px;text-align:center;">
+            <span style="color:#c9d4ea;font-size:11px;">SmartQ · Capstone Project 2026 · Also recorded in the immutable audit log</span>
+          </td>
+        </tr>
+      </table>
+    </td></tr>
+  </table>
+</body>
+</html>

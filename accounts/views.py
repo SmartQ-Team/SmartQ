@@ -83,10 +83,26 @@ def report_issue(request):
             f'Time: {timezone.now()}\n\n'
             f'{description}\n'
         )
-        send_mail(subject, body, settings.DEFAULT_FROM_EMAIL, [settings.ADMIN_REPORT_EMAIL], fail_silently=True)
+        from django.template.loader import render_to_string
+        from django.urls import reverse
+        from smartq.mailer import send_email
+
+        html = render_to_string('emails/report_issue.html', {
+            'category': category,
+            'description': description,
+            'username': request.user.username,
+            'user_email': request.user.email,
+            'reported_at': timezone.now().strftime('%d %b %Y, %H:%M'),
+            'button_url': request.build_absolute_uri(reverse('admin:index')),
+        })
+        delivered = send_email(subject, body, [settings.ADMIN_REPORT_EMAIL], html=html)
+
         log_action(request, action='REPORT_ISSUE', entity_type='Report', entity_id=None,
                    details=f'{category}: {description[:100]}')
-        messages.success(request, 'Your report was emailed to the administrator. Thank you!')
+        if delivered:
+            messages.success(request, 'Your report was emailed to the administrator. Thank you!')
+        else:
+            messages.warning(request, 'Report saved to the audit log, but email could not be sent from this network.')
         return redirect('home')
 
     return render(request, 'accounts/report.html')
