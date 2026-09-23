@@ -1,90 +1,53 @@
 {% extends 'base.html' %}
-{% load static %}
-
 {% block content %}
 <div class="container my-5">
-  <div class="row g-4 justify-content-center align-items-stretch">
-
-    <!-- ===== Hero / carousel panel ===== -->
-    <div class="col-lg-6">
-      <div class="h-100 position-relative d-flex flex-column justify-content-center text-center px-4 py-5 rounded-4"
-           style="background: linear-gradient(135deg, #001f5c, #003087); min-height: 420px;">
-
-        <!-- ★ LOGOS: UFH crest + SmartQ monogram ★ -->
-        <div class="d-flex justify-content-center align-items-center gap-3 mb-4">
-          <img src="{% static 'images/ufh-logo.png' %}" alt="UFH crest" height="56"
-               class="rounded-circle bg-white p-1">
-          <img src="{% static 'images/smartq-icon.png' %}" alt="SmartQ" height="52"
-               class="rounded" style="border:2px solid rgba(255,255,255,.45);">
+  <div class="row g-4 align-items-stretch">
+    <div class="col-lg-7 d-none d-lg-block">
+      <div id="loginCarousel" class="carousel slide h-100 sq-carousel" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="0" class="active"></button>
+          <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="1"></button>
+          <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="2"></button>
         </div>
-
-        <div id="loginCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="4500">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <h2 class="sq-gold fw-bold">Better Queue. Study Smarter.</h2>
-              <p class="text-white-50">Join campus service queues from your phone and track your turn live.</p>
-            </div>
-            <div class="carousel-item">
-              <h2 class="sq-gold fw-bold">Live Updates Every Second</h2>
-              <p class="text-white-50">Position, students ahead and estimated waiting time — always current.</p>
-            </div>
-            <div class="carousel-item">
-              <h2 class="sq-gold fw-bold">Built for UFH Departments</h2>
-              <p class="text-white-50">Finance · Health Clinic · ICT Support and more.</p>
+        <div class="carousel-inner h-100">
+          <div class="carousel-item active h-100">
+            <div class="sq-slide d-flex flex-column justify-content-center text-center px-5">
+              <h2 class="sq-gold">Better Queue. Study Smarter.</h2>
+              <p>Join campus service queues from your phone and track your turn live.</p>
             </div>
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#loginCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#loginCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-          </button>
-          <div class="carousel-indicators">
-            <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#loginCarousel" data-bs-slide-to="2"></button>
+          <div class="carousel-item h-100">
+            <div class="sq-slide d-flex flex-column justify-content-center text-center px-5">
+              <h2 class="sq-gold">Live Updates Every Second</h2>
+              <p>Position, students ahead and estimated waiting time — always current.</p>
+            </div>
+          </div>
+          <div class="carousel-item h-100">
+            <div class="sq-slide d-flex flex-column justify-content-center text-center px-5">
+              <h2 class="sq-gold">Built for UFH Departments</h2>
+              <p>Finance · IT Support and more.</p>
+            </div>
           </div>
         </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#loginCarousel" data-bs-slide="prev"><span class="carousel-control-prev-icon"></span></button>
+        <button class="carousel-control-next" type="button" data-bs-target="#loginCarousel" data-bs-slide="next"><span class="carousel-control-next-icon"></span></button>
       </div>
     </div>
-
-    <!-- ===== Sign-in card ===== -->
     <div class="col-lg-5">
-      <div class="card sq-card h-100">
-        <div class="card-body p-4 d-flex flex-column justify-content-center">
-
-          <!-- ★ WORDMARK above the heading ★ -->
-          <div class="text-center mb-3">
-            <img src="{% static 'images/smartq-wordmark.png' %}" alt="SmartQ" height="36">
-          </div>
-
-          <h4 class="mb-3">Sign in to SmartQ</h4>
-
-          {% if form.errors %}
-            <div class="alert alert-danger py-2">Invalid username or password.</div>
-          {% endif %}
-
+      <div class="card sq-card">
+        <div class="card-body p-4">
+          <h3 class="sq-blue mb-3">Sign in to SmartQ</h3>
+          {% if form.errors %}<div class="alert alert-danger">Invalid username or password.</div>{% endif %}
           <form method="post">
             {% csrf_token %}
-            <div class="mb-3">
-              <label class="form-label">Username</label>
-              <input type="text" name="username" class="form-control" autofocus required>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Password</label>
-              <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn w-100 fw-bold"
-                    style="background:#FFB81C; color:#003087;">Login</button>
+            <div class="mb-3"><label class="form-label">Username</label><input class="form-control" name="username" required autofocus></div>
+            <div class="mb-3"><label class="form-label">Password</label><input class="form-control" type="password" name="password" required></div>
+            <button class="btn btn-gold w-100">Login</button>
           </form>
-
-          <p class="text-center mt-3 mb-0">
-            New student? <a href="{% url 'register' %}">Create an account</a>
-          </p>
+          <p class="text-center mt-3 mb-0">New student? <a href="{% url 'register' %}">Create an account</a></p>
         </div>
       </div>
     </div>
-
   </div>
 </div>
 {% endblock %}
