@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -230,4 +231,42 @@ LOGGING = {
             'propagate': False,
         },
     },
+}
+# ---- React SPA support ----
+INSTALLED_APPS += ['rest_framework', 'corsheaders']
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',   # must be BEFORE CommonMiddleware
+    *MIDDLEWARE,
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://10.20.34.172:5173',   # your hotspot IP, adjust if needed
+]
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'http://10.20.34.172:5173',
+]
+
+# Session cookies must work cross-origin in dev
+SESSION_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_HTTPONLY = False   # React needs to read csrftoken for POST
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'UNAUTHENTICATED_USER': None,
 }

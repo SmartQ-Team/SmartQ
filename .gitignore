@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+.venv/
+db.sqlite3
+*.log
+
+# Django
+staticfiles/
+media/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# React / Node
+smartq-frontend/node_modules/
+smartq-frontend/dist/
+smartq-frontend/.vite/
+smartq-frontend/.env
+smartq-frontend/.env.local
+smartq-frontend/.env.*.local
+
+# OS / Editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
