@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 
 from pathlib import Path
 import logging
+import os
+LAN_IP = os.environ.get('LAN_IP', '10.20.7.12')   # default fallback
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +28,11 @@ SECRET_KEY = 'django-insecure-izvk+q(ty$(j$xj#p!yfzy2&c$y8sy0&nj7%mxi06=0j-l%edu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    '*',
+    'antibody-refill-jugular.ngrok-free.dev',
+    '.ngrok-free.dev',
+]
 
 
 # Application definition
@@ -46,6 +52,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.cache.UpdateCacheMiddleware',
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -55,6 +62,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'smartq.middleware.IdleRedirectMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
     ]
 
 ROOT_URLCONF = 'smartq.urls'
@@ -77,6 +85,17 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'smartq.wsgi.application'
+
+# Sessions — cache-backed to avoid DB race conditions
+SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
+SESSION_SAVE_EVERY_REQUEST = True
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
+        'LOCATION': 'smartq-session-cache',
+    }
+}
 
 
 # Database
@@ -243,14 +262,21 @@ MIDDLEWARE = [
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
-    'http://10.20.34.172:5173',   # your hotspot IP, adjust if needed
+    'https://smartq-project-gamma.vercel.app',
+    'https://smartq-project-git-main-txlegend28.vercel.app',   # ← your Vercel URL, NO trailing slash
 ]
+# Trust ngrok's HTTPS termination headers
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
     'http://localhost:5173',
     'http://127.0.0.1:5173',
-    'http://10.20.34.172:5173',
+    'https://smartq-project-gamma.vercel.app',
+    'https://smartq-project-git-main-txlegend28.vercel.app',
+    'https://antibody-refill-jugular.ngrok-free.dev',   # ← same
 ]
 
 # Session cookies must work cross-origin in dev
