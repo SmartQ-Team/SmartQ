@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import type { InternalAxiosRequestConfig } from 'axios';
 
-const BASE = import.meta.env.VITE_API_URL || 'http://localhost:8000';
+const BASE = import.meta.env.VITE_API_URL || '';
 
 export const api = axios.create({
   baseURL: `${BASE}/api`,
@@ -9,6 +9,9 @@ export const api = axios.create({
   xsrfCookieName: 'csrftoken',
   xsrfHeaderName: 'X-CSRFToken',
 });
+
+// Eagerly fetch CSRF cookie once on module load
+api.get('/csrf/').catch(() => {});
 
 // ---------- Cookie helper ----------
 function readCookie(name: string): string | null {

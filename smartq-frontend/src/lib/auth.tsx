@@ -22,13 +22,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const { data, isLoading } = useQuery({
     queryKey: ['me'],
-    queryFn: Api.me,
+    queryFn: async () => {
+      try {
+        return await Api.me();
+      } catch {
+        // Any error (403/401/network) → treat as "no user"
+        return undefined;
+      }
+    },
     retry: false,
     staleTime: 30_000,
-    refetchInterval: (query) => {
-      // Stop polling once we know there's no user
-      return query.state.data ? 15_000 : false;
-    },
+    refetchOnWindowFocus: false,
+    refetchOnMount: false,
+    refetchInterval: (query) => (query.state.data ? 15_000 : false),
   });
 
   const setMe = useCallback(

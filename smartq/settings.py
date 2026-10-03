@@ -13,14 +13,14 @@ https://docs.djangoproject.com/en/6.1/ref/settings/
 from pathlib import Path
 import logging
 import os
-LAN_IP = os.environ.get('LAN_IP', '10.20.7.12')   # default fallback
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/6.1/howto/deployment/checklist/
+# ------------------------------------------------------------------
+# SECURITY
+# ------------------------------------------------------------------
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-izvk+q(ty$(j$xj#p!yfzy2&c$y8sy0&nj7%mxi06=0j-l%edu'
@@ -35,7 +35,9 @@ ALLOWED_HOSTS = [
 ]
 
 
-# Application definition
+# ------------------------------------------------------------------
+# APPLICATIONS
+# ------------------------------------------------------------------
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -44,16 +46,24 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-     # SmartQ apps
+
+    # Third-party
+    'corsheaders',
+    'rest_framework',
+
+    # SmartQ apps
     'accounts',
     'services',
     'queues',
 ]
 
+
+# ------------------------------------------------------------------
+# MIDDLEWARE
+# ------------------------------------------------------------------
+
 MIDDLEWARE = [
-    'django.middleware.cache.UpdateCacheMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',              # must be FIRST
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -62,8 +72,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'smartq.middleware.IdleRedirectMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
-    ]
+]
 
 ROOT_URLCONF = 'smartq.urls'
 
@@ -86,7 +95,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'smartq.wsgi.application'
 
-# Sessions — cache-backed to avoid DB race conditions
+
+# ------------------------------------------------------------------
+# SESSIONS & CACHE
+# ------------------------------------------------------------------
+
 SESSION_ENGINE = 'django.contrib.sessions.backends.cached_db'
 SESSION_SAVE_EVERY_REQUEST = True
 
@@ -98,10 +111,10 @@ CACHES = {
 }
 
 
-# Database
-# https://docs.djangoproject.com/en/6.1/ref/settings/#databases
+# ------------------------------------------------------------------
+# DATABASE
+# ------------------------------------------------------------------
 
-#Main database
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -114,17 +127,17 @@ DATABASES = {
 }
 
 # TEMPORARY - MySQL mirror for ERD
-#DATABASES = {
-#    'default': {
-#        'ENGINE': 'django.db.backends.mysql',
-#        'NAME': 'smartq_mysql',
-#        'USER': 'smartq',
-#        'PASSWORD': 'SmartQ2026',
-#        'HOST': '127.0.0.1',
-#        'PORT': '3306',
-#        'OPTIONS': {'charset': 'utf8mb4'},
-#    }
-#}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'smartq_mysql',
+#         'USER': 'smartq',
+#         'PASSWORD': 'SmartQ2026',
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#         'OPTIONS': {'charset': 'utf8mb4'},
+#     }
+# }
 
 # SQLite backup (uncomment to roll back)
 # DATABASES = {
@@ -134,66 +147,131 @@ DATABASES = {
 #     }
 # }
 
-# Password validation
-# https://docs.djangoproject.com/en/6.1/ref/settings/#auth-password-validators
+
+# ------------------------------------------------------------------
+# PASSWORD VALIDATION
+# ------------------------------------------------------------------
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+    {'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'},
+    {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'},
 ]
 
 
-# Internationalization
-# https://docs.djangoproject.com/en/6.1/topics/i18n/
-
-# Internationalization
-# https://docs.djangoproject.com/en/6.1/topics/i18n/
+# ------------------------------------------------------------------
+# INTERNATIONALIZATION
+# ------------------------------------------------------------------
 
 LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Johannesburg'
 USE_I18N = True
 USE_TZ = True
 
-# Static files (CSS, JavaScript, Images)
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# --- Sessions & idle policy (Items 1 & 2) ---
-SESSION_COOKIE_AGE = 12 * 60 * 60        # auto logout after 12 hours (Fixed math!)
-IDLE_REDIRECT_SECONDS = 30 * 60          # return home after 30 min idle
+# ------------------------------------------------------------------
+# STATIC FILES
+# ------------------------------------------------------------------
 
-# --- Email delivery: HTTPS API first (works on ALL networks), SMTP backup ---
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+    BASE_DIR / 'smartq_static',
+]
+
+
+# ------------------------------------------------------------------
+# SESSIONS & IDLE POLICY
+# ------------------------------------------------------------------
+
+SESSION_COOKIE_AGE = 12 * 60 * 60        # 12 hours
+IDLE_REDIRECT_SECONDS = 30 * 60          # 30 min idle → home
+
+
+# ------------------------------------------------------------------
+# EMAIL DELIVERY
+# ------------------------------------------------------------------
+
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'garethzuma28@gmail.com'
-EMAIL_HOST_PASSWORD = 'CHANGE_ME'   # optional backup channel (Gmail App Password)
+EMAIL_HOST_PASSWORD = 'CHANGE_ME'
 DEFAULT_FROM_EMAIL = 'garethzuma28@gmail.com'
 ADMIN_REPORT_EMAIL = 'zumagareth28@gmail.com'
-# Base URL used inside email buttons (change when on hotspot)
 SITE_URL = 'http://10.20.34.172:8000'
 
-# Brevo HTTPS channel (port 443 - never blocked by campus Wi-Fi)
+# Brevo HTTPS channel (port 443)
 BREVO_API_KEY = 'CHANGE_ME'
 BREVO_SENDER_EMAIL = 'garethzuma28@gmail.com'
 
-# SmartQ login redirects
+
+# ------------------------------------------------------------------
+# AUTH REDIRECTS
+# ------------------------------------------------------------------
+
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'login'
 
-# --- Console logging: timestamps, colours, quiet polling ---
+
+# ------------------------------------------------------------------
+# DJANGO REST FRAMEWORK
+# ------------------------------------------------------------------
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ],
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderers.JSONRenderer',
+    ],
+    'UNAUTHENTICATED_USER': None,
+}
+
+
+# ------------------------------------------------------------------
+# CORS + CSRF + PROXY (React SPA support)
+# ------------------------------------------------------------------
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'https://smartq-project-gamma.vercel.app',
+    'https://smartq-project-git-main-txlegend28.vercel.app',
+]
+
+CORS_ALLOW_CREDENTIALS = True
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:5173',
+    'http://127.0.0.1:5173',
+    'https://smartq-project-gamma.vercel.app',
+    'https://smartq-project-git-main-txlegend28.vercel.app',
+    'https://antibody-refill-jugular.ngrok-free.dev',
+]
+
+# Trust ngrok's HTTPS termination
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+
+# Cross-site cookies (Vercel frontend ↔ ngrok backend = different domains)
+SESSION_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SECURE = False
+CSRF_COOKIE_SAMESITE = 'Lax'
+CSRF_COOKIE_SECURE = False
+CSRF_COOKIE_HTTPONLY = False   # React needs to read csrftoken for POST
+
+
+# ------------------------------------------------------------------
+# LOGGING
+# ------------------------------------------------------------------
+
 class _SkipPollingFilter:
     _PREFIXES = ('/notifications/api/', '/staff/api/', '/queue/api/', '/board/api/')
 
@@ -215,13 +293,13 @@ class _SmartQServerFormatter(logging.Formatter):
         color = ''
         if status:
             if any(p in msg for p in self.AUTH_PATHS):
-                color = self.GREEN          # register / login / logout → GREEN
+                color = self.GREEN
             elif status >= 500 or status == 403:
-                color = self.RED            # server errors / forbidden → red
+                color = self.RED
             elif status >= 400:
-                color = self.YELLOW         # not found etc → yellow
+                color = self.YELLOW
             elif status >= 300:
-                color = self.GREEN          # redirects → green
+                color = self.GREEN
         server_time = getattr(record, 'server_time', self.formatTime(record))
         line = f'[{server_time}] {msg}'
         return color + line + self.RESET if color else line
@@ -250,49 +328,4 @@ LOGGING = {
             'propagate': False,
         },
     },
-}
-# ---- React SPA support ----
-INSTALLED_APPS += ['rest_framework', 'corsheaders']
-
-MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',   # must be BEFORE CommonMiddleware
-    *MIDDLEWARE,
-]
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'https://smartq-project-gamma.vercel.app',
-    'https://smartq-project-git-main-txlegend28.vercel.app',   # ← your Vercel URL, NO trailing slash
-]
-# Trust ngrok's HTTPS termination headers
-SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-USE_X_FORWARDED_HOST = True
-
-CORS_ALLOW_CREDENTIALS = True
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://localhost:5173',
-    'http://127.0.0.1:5173',
-    'https://smartq-project-gamma.vercel.app',
-    'https://smartq-project-git-main-txlegend28.vercel.app',
-    'https://antibody-refill-jugular.ngrok-free.dev',   # ← same
-]
-
-# Session cookies must work cross-origin in dev
-SESSION_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_SAMESITE = 'Lax'
-CSRF_COOKIE_HTTPONLY = False   # React needs to read csrftoken for POST
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-    'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderers.JSONRenderer',
-    ],
-    'UNAUTHENTICATED_USER': None,
 }

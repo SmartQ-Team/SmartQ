@@ -19,7 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/', include('queues.api_urls')),   # ← NEW (must be before the catch-all)
-    path('', include('accounts.urls')),
-    path('', include('queues.urls')),
+    path('api/', include('queues.api_urls')),
+
+    # React SPA catch-all — MUST be last
+    path('', include('smartq.urls_spa')),
 ]
