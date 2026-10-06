@@ -5,6 +5,7 @@ from accounts.api_views_registration import api_register
 urlpatterns = [
     # auth
     path('csrf/', v.csrf_bootstrap, name='api_csrf'),
+    path('register/', api_register, name='api_register'),
     path('login/', v.api_login, name='api_login'),
     path('logout/', v.api_logout, name='api_logout'),
     path('me/', v.api_me, name='api_me'),

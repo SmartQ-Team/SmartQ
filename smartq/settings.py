@@ -198,13 +198,13 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'garethzuma28@gmail.com'
-EMAIL_HOST_PASSWORD = 'CHANGE_ME'
+EMAIL_HOST_PASSWORD = 'CHANGEME'
 DEFAULT_FROM_EMAIL = 'garethzuma28@gmail.com'
 ADMIN_REPORT_EMAIL = 'zumagareth28@gmail.com'
 SITE_URL = 'http://10.20.34.172:8000'
 
 # Brevo HTTPS channel (port 443)
-BREVO_API_KEY = 'CHANGE_ME'
+BREVO_API_KEY = 'CHANGEME'
 BREVO_SENDER_EMAIL = 'garethzuma28@gmail.com'
 
 

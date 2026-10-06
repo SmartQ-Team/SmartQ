@@ -209,7 +209,9 @@ export type Board = {
 // ---------- Endpoints ----------
 export const Api = {
   login: (username: string, password: string) =>
-    api.post<Me>('/login/', { username, password }).then((r) => r.data),
+  api.post<Me>('/login/', { username, password }).then((r) => r.data),
+  register: (data: Record<string, string>) =>
+  api.post<Me>('/register/', data).then((r) => r.data),
   logout: () => api.post('/logout/').then((r) => r.data),
   me: () => api.get<Me>('/me/').then((r) => r.data),
 

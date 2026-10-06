@@ -128,14 +128,18 @@ def notify_late(entry):
 
 
 def email_student_called(entry, request=None):
+    from django.conf import settings
     from django.template.loader import render_to_string
-    from django.urls import reverse
 
     from smartq.mailer import send_email
 
-    button_url = '#'
+    # React SPA route — Django doesn't own this URL anymore, so build it manually.
+    # If request is present, use its host so the link works on both localhost and LAN IP.
     if request is not None:
-        button_url = request.build_absolute_uri(reverse('my_queue'))
+        base = request.build_absolute_uri('/').rstrip('/')
+    else:
+        base = getattr(settings, 'SITE_URL', 'http://localhost:8000').rstrip('/')
+    button_url = f'{base}/queue'
 
     html = render_to_string('emails/called_next.html', {
         'username': entry.student.username,

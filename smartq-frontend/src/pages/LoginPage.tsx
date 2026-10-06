@@ -1,15 +1,29 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Api, apiError } from '../lib/api';
 import { useAuth } from '../lib/auth';
 import logo from '../assets/smartq-logo.png';
 
-const slides = [
-  { title: 'Better Queue. Study Smarter.', body: 'Join campus service queues from your phone and track your turn live.' },
-  { title: 'Live Updates Every Second', body: 'Position, students ahead, and estimated waiting time — always current.' },
-  { title: 'Built for UFH Departments', body: 'Finance · ICT Support · NSFAS · Fee Enquiry — all in one app.' },
+const SLIDES = [
+  {
+    title: 'Better Queue. Study Smarter.',
+    body: 'Join campus service queues from your phone and track your turn live.',
+    icon: '🎓',
+  },
+  {
+    title: 'Live Updates Every Second',
+    body: 'Position, students ahead, and estimated waiting time — always current.',
+    icon: '⚡',
+  },
+  {
+    title: 'Built for UFH Departments',
+    body: 'Finance · ICT Support · and more — all in one place.',
+    icon: '🏛️',
+  },
 ];
+
+const SLIDE_INTERVAL_MS = 5000;
 
 export default function LoginPage() {
   const { me, setMe } = useAuth();
@@ -19,6 +33,14 @@ export default function LoginPage() {
   const [err, setErr] = useState('');
   const [busy, setBusy] = useState(false);
   const [slide, setSlide] = useState(0);
+
+  // Auto-advance the hero carousel
+  useEffect(() => {
+    const id = setInterval(() => {
+      setSlide((s) => (s + 1) % SLIDES.length);
+    }, SLIDE_INTERVAL_MS);
+    return () => clearInterval(id);
+  }, []);
 
   // If already logged in, redirect immediately
   useEffect(() => {
@@ -33,9 +55,7 @@ export default function LoginPage() {
     setBusy(true);
     try {
       const user = await Api.login(username, password);
-      // 1. Push the user into the auth cache INSTANTLY
       setMe(user);
-      // 2. Navigate based on role
       nav(user.is_staff_role ? '/staff' : '/services', { replace: true });
     } catch (e) {
       setErr(apiError(e));
@@ -46,41 +66,58 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen grid lg:grid-cols-2">
+      {/* ---------- Left: hero panel with carousel ---------- */}
       <div className="relative bg-gradient-to-br from-ufh-deep via-ufh-blue to-ufh-dark text-white p-8 lg:p-14 flex flex-col justify-center overflow-hidden">
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_30%_20%,white,transparent_40%)]" />
-        <motion.div
-          key={slide}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="relative max-w-md"
-        >
+
+        <div className="relative max-w-md w-full">
+          {/* Logo */}
           <img
             src={logo}
             alt="SmartQ"
-            className="w-20 h-20 mb-8 shadow-2xl rounded-3xl"
-            />
-          <h1 className="font-display text-4xl lg:text-5xl font-bold leading-tight mb-4">
-            {slides[slide].title}
-          </h1>
-          <p className="text-white/75 text-lg">{slides[slide].body}</p>
+            className="w-16 h-16 mb-10 rounded-2xl shadow-2xl"
+          />
 
+          {/* Carousel slides */}
+          <div className="relative min-h-[220px]">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={slide}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.5, ease: 'easeOut' }}
+                className="absolute inset-0"
+              >
+                <div className="text-4xl mb-4">{SLIDES[slide].icon}</div>
+                <h1 className="font-display text-4xl lg:text-5xl font-bold leading-tight mb-4">
+                  {SLIDES[slide].title}
+                </h1>
+                <p className="text-white/75 text-lg leading-relaxed">
+                  {SLIDES[slide].body}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Dots */}
           <div className="mt-10 flex gap-2">
-            {slides.map((_, i) => (
+            {SLIDES.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setSlide(i)}
-                className={`h-1.5 rounded-full transition-all ${
-                  i === slide ? 'w-8 bg-ufh-gold' : 'w-4 bg-white/30'
+                className={`h-1.5 rounded-full transition-all duration-300 ${
+                  i === slide ? 'w-10 bg-ufh-gold' : 'w-4 bg-white/30 hover:bg-white/50'
                 }`}
-                aria-label={`Slide ${i + 1}`}
+                aria-label={`Show slide ${i + 1}`}
               />
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
 
-      <div className="flex items-center justify-center p-8">
+      {/* ---------- Right: login form ---------- */}
+      <div className="flex items-center justify-center p-8 bg-white">
         <form onSubmit={submit} className="w-full max-w-sm">
           <h2 className="font-display text-3xl font-bold text-ufh-blue mb-1">
             Sign in to SmartQ
@@ -93,7 +130,9 @@ export default function LoginPage() {
             </div>
           )}
 
-          <label className="block text-sm font-medium text-gray-700 mb-1">Username</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Username
+          </label>
           <input
             value={username}
             onChange={(e) => setU(e.target.value)}
@@ -102,7 +141,9 @@ export default function LoginPage() {
             required
           />
 
-          <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
+          <label className="block text-sm font-medium text-gray-700 mb-1">
+            Password
+          </label>
           <input
             type="password"
             value={password}

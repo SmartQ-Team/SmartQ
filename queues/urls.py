@@ -1,4 +1,5 @@
 from django.urls import path
+from accounts.api_views_registration import api_register
 
 from . import views
 
@@ -21,4 +22,5 @@ urlpatterns = [
     path('staff/entry/<int:entry_id>/no-show/', views.mark_no_show, name='mark_no_show'),
     path('staff/entry/<int:entry_id>/reschedule/', views.reschedule_entry, name='reschedule_entry'),
     path('staff/analytics/', views.analytics, name='analytics'),
+    path('register/', api_register, name='api_register'),
 ]
