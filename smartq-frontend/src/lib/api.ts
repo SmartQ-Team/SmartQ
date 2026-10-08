@@ -196,7 +196,7 @@ export type Analytics = {
     waiting_now: number; avg_wait: number; avg_service: number; max_queue: number;
   };
   peak_periods: { hour: string; count: number }[];
-  counters: { counter: string; served: number }[];
+  counters: { counter: string; department: string; served: number }[];
 };
 
 export type Board = {

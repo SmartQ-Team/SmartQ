@@ -212,9 +212,9 @@ BREVO_SENDER_EMAIL = 'garethzuma28@gmail.com'
 # AUTH REDIRECTS
 # ------------------------------------------------------------------
 
-LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'login'
+LOGIN_URL = '/login'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/login'
 
 
 # ------------------------------------------------------------------
@@ -240,6 +240,7 @@ REST_FRAMEWORK = {
 # ------------------------------------------------------------------
 
 CORS_ALLOWED_ORIGINS = [
+    'http://10.20.2.34:8000',
     'http://localhost:5173',
     'http://127.0.0.1:5173',
     'https://smartq-project-gamma.vercel.app',
@@ -249,6 +250,7 @@ CORS_ALLOWED_ORIGINS = [
 CORS_ALLOW_CREDENTIALS = True
 
 CSRF_TRUSTED_ORIGINS = [
+    'http://10.20.2.34:8000',
     'http://localhost:5173',
     'http://127.0.0.1:5173',
     'https://smartq-project-gamma.vercel.app',
@@ -329,3 +331,18 @@ LOGGING = {
         },
     },
 }
+
+# Auto-trust the current LAN origin during development
+if DEBUG:
+    import socket
+    try:
+        hostname = socket.gethostname()
+        local_ip = socket.gethostbyname(hostname)
+        for port in (8000, 5173):
+            origin = f'http://{local_ip}:{port}'
+            if origin not in CSRF_TRUSTED_ORIGINS:
+                CSRF_TRUSTED_ORIGINS.append(origin)
+            if origin not in CORS_ALLOWED_ORIGINS:
+                CORS_ALLOWED_ORIGINS.append(origin)
+    except Exception:
+        pass

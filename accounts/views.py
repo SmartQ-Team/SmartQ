@@ -103,6 +103,6 @@ def report_issue(request):
             messages.success(request, 'Your report was emailed to the administrator. Thank you!')
         else:
             messages.warning(request, 'Report saved to the audit log, but email could not be sent from this network.')
-        return redirect('home')
+        return redirect('/')
 
     return render(request, 'accounts/report.html')

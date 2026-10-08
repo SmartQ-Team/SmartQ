@@ -25,7 +25,7 @@ class IdleRedirectMiddleware:
                     request,
                     'You were returned to the home page after 30 minutes of inactivity.',
                 )
-                return redirect('home')
+                return redirect('/')
 
             if not request.path.startswith(API_PREFIXES):
                 request.session['last_activity'] = now

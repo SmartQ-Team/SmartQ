@@ -10,12 +10,12 @@ def staff_required(view_func):
     @wraps(view_func)
     def wrapper(request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('login')
+            return redirect('/login')
 
         profile = getattr(request.user, 'profile', None)
         if profile is None or profile.role not in STAFF_ROLES:
             messages.error(request, 'You do not have permission to access the staff area.')
-            return redirect('home')
+            return redirect('/')
 
         return view_func(request, *args, **kwargs)
 

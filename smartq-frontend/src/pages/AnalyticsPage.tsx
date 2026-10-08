@@ -79,22 +79,24 @@ export default function AnalyticsPage() {
           <table className="w-full text-sm">
             <thead>
               <tr className="bg-ufh-blue text-white text-left">
-                <th className="px-6 py-3">Counter</th>
-                <th className="px-6 py-3 text-right">Students served</th>
+               <th className="px-6 py-3">Counter</th>
+               <th className="px-6 py-3">Department</th>
+               <th className="px-6 py-3 text-right">Students served</th>
               </tr>
             </thead>
-            <tbody>
-              {data.counters.length === 0 && (
-                <tr><td colSpan={2} className="px-6 py-6 text-center text-gray-400">No active counters.</td></tr>
-              )}
-              {data.counters.map((c) => (
-                <tr key={c.counter} className="border-b border-gray-100">
-                  <td className="px-6 py-4">{c.counter}</td>
-                  <td className="px-6 py-4 text-right font-semibold text-ufh-blue">{c.served}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+          <tbody>
+            {data.counters.length === 0 && (
+              <tr><td colSpan={3} className="px-6 py-6 text-center text-gray-400">No active counters.</td></tr>
+          )}
+          {data.counters.map((c) => (
+            <tr key={`${c.department}-${c.counter}`} className="border-b border-gray-100">
+              <td className="px-6 py-4">{c.counter}</td>
+              <td className="px-6 py-4 text-gray-500 text-xs">{c.department}</td>
+              <td className="px-6 py-4 text-right font-semibold text-ufh-blue">{c.served}</td>
+            </tr>
+          ))}
+          </tbody>
+        </table>
         </div>
       </div>
     </div>

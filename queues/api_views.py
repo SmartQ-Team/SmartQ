@@ -533,10 +533,31 @@ def api_analytics(request):
                .values('hour').annotate(count=Count('id')).order_by('hour')
     )
 
+        # ---- Counter utilisation ----
+    # Admins and superusers see ALL counters across all departments.
+    # Staff and supervisors see only counters in their own department.
+    is_admin = (
+        profile.role == 'ADMIN'
+        or request.user.is_superuser
+        or request.user.is_staff
+    )
+
+    if is_admin:
+        from services.models import Counter
+        counter_qs = Counter.objects.filter(active=True).select_related('department')
+    elif profile.department:
+        counter_qs = profile.department.counters.filter(active=True).select_related('department')
+    else:
+        counter_qs = Counter.objects.none()
+
     counters = []
-    if profile.department:
-        for c in profile.department.counters.filter(active=True):
-            counters.append({'counter': c.name, 'served': served.filter(counter=c).count()})
+    for c in counter_qs:
+        served_count = served.filter(counter=c).count()
+        counters.append({
+            'counter': c.name,
+            'department': c.department.name,   # so React can label them
+            'served': served_count,
+        })
 
     return Response({
         'department': profile.department.name if profile.department else 'All departments',
